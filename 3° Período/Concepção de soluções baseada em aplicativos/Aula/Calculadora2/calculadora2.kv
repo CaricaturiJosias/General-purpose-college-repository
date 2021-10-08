@@ -1,0 +1,75 @@
+<Principal>:
+    #nome da calculadora
+    orientation: 'vertical'
+    
+    BoxLayout: 
+        orientation : 'vertical'
+        Label:
+            text: 'Calculadora josias jamelão'
+            id = nome_calculadora
+    
+    BoxLayout:
+        
+        orientation: 'vertical'
+        
+        Label:
+            text: ''
+            id = conta_tela
+            
+    BoxLayout:
+        #operações
+        orientation: 'vertical'
+        
+        Spinner:
+            
+            orientation: 'vertical'
+            
+            values: {'soma','subtracao','multiplicacao','divisao','media','frequencia',}
+            text: 'soma'
+            id: tipo_operacao
+            
+            on_text: root.muda_conta(tipo_operacao.text)
+        
+    GridLayout:
+        cols:3
+        Button:
+            text:'0'
+            id: botao_0
+            on_release: conta_tela.text += '0'       
+        Button:
+            text:'1'
+            id: botao_1
+            on_release: conta_tela.text += '1'
+        Button:
+            text:'2'
+            id: botao_2
+            on_release: conta_tela.text += '2'
+        Button:
+            text:'3'
+            id: botao_3
+            on_release: conta_tela.text += '3'
+        Button:
+            text:'4'
+            id: botao_4
+            on_release: conta_tela.text += '4'
+        Button:
+            text:'5'
+            id: botao_5
+            on_release: conta_tela.text += '5'
+        Button:
+            text:'6'
+            id: botao_6
+            on_release: conta_tela.text += '6'
+        Button:
+            text:'7'
+            id: botao_7
+            on_release: conta_tela.text += '7'
+        Button:
+            text:'8'
+            id: botao_8
+            on_release: conta_tela.text += '8'
+        Button:
+            text:'9'
+            id: botao_9
+            on_release: conta_tela.text += '9'
+        

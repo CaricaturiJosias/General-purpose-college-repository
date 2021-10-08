@@ -1,0 +1,387 @@
+<Inicial>    
+    on_pre_enter: root.esvazia_campos()        
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'wall2.jpg'
+
+            Rectangle:
+                source: 'petlogo2.png'
+                size: 270,200
+                pos: 15, 280
+
+        Label:
+            text: '[b][color=#000000]BEM-VINDO[/color][/b]'
+            id: mensagem_inicial
+            font_size: 15
+            markup: True
+            size_hint: 1, None
+            height: 30
+            pos_hint: {'center_x': 0.5, 'top': 0.525}
+                    
+        Label:
+            text: '[b][color=#000000]Usuario[/color][/b]'
+            size_hint: 1, None
+            markup: True
+            height: 30
+            pos_hint: {'x': -0.33, 'top': 0.47}
+            
+        TextInput:
+            id: usuario
+            size_hint: 0.85, None
+            height: 29
+            pos_hint: {'center_x': 0.5, 'center_y': 0.40}
+        
+        Label:
+            text: '[b][color=#000000]Senha[/color][/b]'
+            markup: True
+            size_hint: 1, None
+            height: 30
+            pos_hint: {'x': -0.35, 'center_y': 0.32}
+            
+        TextInput:
+            id: senha
+            size_hint: 0.85, None
+            height: 29
+            pos_hint: {'center_x': 0.5, 'center_y': 0.28}
+                
+        Button:
+            text: '[b][color=#000000]Login[/color][/b]'
+            markup: True
+            on_release: root.btn_login()  
+            size_hint: 0.38, None
+            height: 40
+            pos_hint: {'center_x': 0.3, 'center_y': 0.18}           
+            background_normal: 'botnormal.png'
+            background_down: 'botdown.png'   
+            
+        Button:
+            text: '[b][color=#000000]Cadastro[/color][/b]'
+            markup: True
+            on_release: root.btn_cadastro()
+            size_hint: 0.38, None
+            height: 40
+            pos_hint: {'center_x': 0.7, 'center_y': 0.18}     
+            background_normal: 'botnormal.png'
+            background_down: 'botdown.png'         
+               
+        Button:
+            text: '[b][color=#000000]Sair[/color][/b]'
+            markup: True
+            on_release: app.stop()
+            size_hint: 0.4, None
+            height: 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.08}    
+            background_normal: 'botnormal.png'
+            background_down: 'botdown.png'   
+                
+<Cadastro>
+    BoxLayout:
+        orientation: 'vertical'
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'wall2.jpg'
+        
+        Widget:
+            pos_hint_y: None
+            height: 2.5
+            
+        Label:
+            text: '[b][color=#000000]CADASTRO[/color][/b]'
+            id: Cadastro_mensagem
+            font_size: 40
+            markup: True
+            size_hint_y: None
+            height: 60
+            
+        Label:
+            text: '[b][color=#000000]Usuario[/color][/b]'
+            size_hint_y: None
+            height: 30
+            markup: True
+        
+        TextInput:
+            id: novo_usuario
+            size_hint: (0.8, None)
+            pos_hint: {'center_x': 0.5}
+            height: 29
+            
+        Label:
+            text: '[b][color=#000000]Data Nascimento[/color][/b]'
+            size_hint_y: None
+            height: 30
+            markup: True
+        
+        TextInput:
+            id: novo_data_nascimento
+            size_hint: (0.8, None)
+            pos_hint: {'center_x': 0.5}
+            height: 29    
+
+        Label:
+            text: '[b][color=#000000]Email[/color][/b]'
+            size_hint_y: None
+            height: 30
+            markup: True
+        
+        TextInput:
+            id: novo_email
+            size_hint: (0.8, None)
+            pos_hint: {'center_x': 0.5}
+            height: 29
+        Label:
+            text: '[b][color=#000000]Senha[/color][/b]'
+            size_hint_y: None
+            height: 30
+            markup: True
+        
+        TextInput:
+            id: novo_senha
+            size_hint: (0.8, None)
+            pos_hint: {'center_x': 0.5}
+            height: 29
+        
+        Widget:
+            size_hint_y: None
+            height: 30
+            
+        BoxLayout:    
+            orientation: 'horizontal'    
+            CheckBox:
+                active: True
+                size_hint: (None, None)
+                height: 50                
+                width: 90
+                
+            Label:
+                text: '[b][color=#000000]Aceito todos os termos de uso[/color][/b]'
+                font_size: 10
+                size_hint: (None, None)
+                height: 48
+                width: 92
+                markup: True
+             
+        Button:
+            size_hint: (0.8, None)
+            pos_hint: {'center_x': 0.5}            
+            height: 38   
+            text: '[b][color=#000000]Cadastrar[/color][/b]'
+            markup: True
+            on_release: root.btn_cadastrar() 
+            background_normal: 'botnormal.png'
+            background_down: 'botdown.png'
+
+        Widget:
+            size_hint_y: None
+            height: 5             
+            
+        Button:
+            size_hint: (0.8, None)
+            pos_hint: {'center_x': 0.5}
+            height: 38    
+            text: '[b][color=#000000]Cancelar[/color][/b]'
+            markup: True
+            background_normal: 'botnormal.png'
+            background_down: 'botdown.png'
+            on_release: root.btn_cancelar()
+
+        Widget:
+            pos_hint_y: None
+            height: 5            
+            
+<MeusPetinhos>
+    BoxLayout:
+        orientation: 'vertical'
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'wall2.jpg'        
+        Label:
+            text: '[b][color=#000000]MEUS PETINHOS[/color][/b]'
+            font_size: 35
+            markup: True
+            size_hint_y: None
+            height: 120
+            
+        GridLayout:
+            size_hint_y:None
+            height: 300
+            
+            cols: 2
+            rows: 3
+            
+            spacing: 8
+            padding: 3
+            
+            Button:
+                id: pet1
+                text: '[b][color=#000000]Novo[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_release: root.btn_cadastrapet()
+                
+            Button:
+                id: pet2
+                text: '[b][color=#000000]Novo[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_release: root.btn_cadastrapet()
+
+            Button:
+                id: pet3
+                text: '[b][color=#000000]Novo[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_release: root.btn_cadastrapet()
+                
+            Button:
+                id: pet4
+                text: '[b][color=#000000]Novo[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_release: root.btn_cadastrapet()
+            
+            Button:
+                id: pet5
+                text: '[b][color=#000000]Novo[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_release: root.btn_cadastrapet()
+                
+            Button:
+                id: pet6
+                text: '[b][color=#000000]Novo[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'  
+                on_release: root.btn_cadastrapet()
+        
+        Widget:
+            size_hint_y: None
+            height: 10
+        
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                id:deslogar
+                text: '[b][color=#000000]Deslogar[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_release: root.btn_deslogar()
+                size_hint: (0.8, None)
+                pos_hint: {'center_x': 0.5}
+                height: 38 
+
+        Widget:
+            size_hint_y: None
+            height: 30
+            
+<CadastroPet>
+    BoxLayout:
+        orientation: 'vertical'
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'wall2.jpg'
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y:None
+            height: 100        
+            Label:
+                text: '[b][color=#000000]NOVO[/color][/b]'
+                font_size: 35
+                markup: True
+                size_hint_y: None
+                height: 50
+                
+            Label:        
+                text: '[b][color=#000000]PETINHO[/color][/b]'
+                font_size: 35
+                markup: True
+                size_hint_y: None
+                height: 50                         
+        
+        FloatLayout:
+            size_hint_y:None
+            height: 250
+            
+            canvas:
+                Rectangle:
+                    size: (100,150)
+                    pos: (150, 200)
+                    source: root.imagem_pet
+            
+            Spinner: 
+                id: mudapet
+                values: {'Cachorro', 'Gato'}
+                text: 'Cachorro'
+                markup: True
+                size_hint: (None,None)
+                height: 30
+                width: 80
+                pos_hint: {'center_y': 0.5, 'x': 0.1}
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_text: root.mudaPet(mudapet.text)
+                    
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y:None
+            height: 150
+            padding: 10
+            spacing: 10
+            
+            Label:
+                text: '[b][color=#000000]Nome do pet[/color][/b]'
+                size_hint: 1, None
+                markup: True
+                height: 10
+                pos_hint: {'x': -0.28, 'top': 0.47}
+                
+            TextInput:
+                id: nomepet
+                size_hint: 0.85, None
+                height: 29
+                pos_hint: {'center_x': 0.5, 'center_y': 0.40}            
+            
+            Button:
+                text: '[b][color=#000000]Registrar[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_release: root.btn_regpet()
+                size_hint: (0.8, None)
+                pos_hint: {'center_x': 0.5}
+                height: 38            
+            
+            Button:
+                text: '[b][color=#000000]Voltar[/color][/b]'
+                markup: True
+                background_normal: 'botnormal.png'
+                background_down: 'botdown.png'
+                on_release: root.btn_voltar()
+                size_hint: (0.8, None)
+                pos_hint: {'center_x': 0.5}
+                height: 38                     
+              

@@ -1,0 +1,86 @@
+#classe de boxlayout (visual)
+<Quadro>
+    #define orientação dos elementos
+    orientation: 'vertical'
+    
+    #widgets
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        Label:
+            text: 'Calculadora Josias'
+    FloatLayout: #ocupa 20% do espaco vertical (pois tem 5 boxlayout em horizontal)
+        #como é 100% desse boxlayout é ele que ocupa 25% do espaco
+        #ocupa 50% do horizontal (o label e o textinput é 50% cada)
+        Label: 
+            text: 'Insira o primeiro numero:'
+            size_hint:(0.4,None)
+            height: 30
+            pos_hint: {'x':0.05,'center_y':0.50}
+        
+        TextInput:    
+            id: num1
+            
+            #muda tamanho (sufixo _y e _x, porcentagem do espaco que ele automaticamente ocupa)
+            size_hint: (0.4,None)
+            #tira o fator preso a porcentagem, vira pixels (width(x) e height(y)), bom caso a janela possa ser diminuida
+            
+            height: 30 #altura fixa, em pixels
+            
+            pos_hint: {'right':0.95,'center_y':0.50}
+            #pos_hint é um dicionário, pode ter valores(esquerda,baixo,meio,direita, topo) que indica tamanho e posição
+    
+    FloatLayout:
+     
+        Label:
+            text: 'Insira o segundo numero:'
+            size_hint:(0.4,None)
+            height: 30
+            pos_hint: {'x':0.05,'center_y':0.90}
+        TextInput:
+            id: num2
+            size_hint: (0.4,None)
+            height: 30
+            pos_hint: {'right':0.95,'center_y':0.90}
+    FloatLayout:
+        
+        Spinner:
+            
+            values: {'soma','subtracao','multiplicacao','divisao'}
+            
+            text:'soma'
+            
+            id:tipo_operacao
+            
+            on_text: root.muda_frase(tipo_operacao.text)
+            #largura: 40% do total
+            
+            #altura: 50 pixels
+            size_hint: (0.4,None)
+            height: 50
+            pos_hint: {'x':0.05, 'center_y':0.5}
+           
+        Button:
+            text: 'Clique aqui para SOMAR'
+            id:botao
+            
+            size_hint: (0.4,0.8)
+            #evento para quando o usuário soltar o botão do mouse
+            
+            pos_hint: {'right':0.95, 'center_y':0.5 }
+            #margem direita: 5% da direita do quadro
+            
+            on_release: root.botao_operacao()
+            #root aponta pra classe raiz (tipo self.), puxa do main
+        
+        
+    BoxLayout:
+        orientation: 'horizontal'
+        Label:
+            text: 'Resultado:'
+        
+        TextInput:
+            id: saida
+            size_hint_y: None
+            height:30
+            pos_hint: {'right':0.95,'center_y':0.5}

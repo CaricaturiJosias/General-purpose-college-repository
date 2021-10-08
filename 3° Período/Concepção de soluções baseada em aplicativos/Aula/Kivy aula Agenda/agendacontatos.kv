@@ -1,0 +1,122 @@
+<Linha>
+    orientation: 'horizontal'
+    Button:
+        on_release: root.exibir_detalhes()
+    
+        size_hint_x: None
+        width : self.height #largura = altura 
+        
+        #aplicar imagem no botao
+        canvas:
+            Rectangle:
+                source: 'lupa.png'
+                size: 20, 20 #tamanho da img
+                pos: self.pos[0] + (self.width - 20)/2, self.pos[1] + (self.height - 20)/2
+                
+            
+    Label:        
+        text: root.nome
+   
+    Label: 
+        text: root.telefone
+
+<Principal>
+    
+    on_pre_enter: root.popular_listagem(txBusca.text)
+    
+    BoxLayout:
+        orientation: 'vertical'         
+        spacing: 5 #espaço entre os widgets
+        padding: 5 #espaço entre os widgets e as bordas
+        
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            
+            TextInput:
+                id: txBusca
+                text: ''
+            
+            Button:
+                size_hint_x: None
+                width: 30
+                on_release: root.popular_listagem(txBusca.text)
+                
+                #aplicar imagem no botao
+                canvas:
+                    Rectangle:
+                        source: 'lupa.png'
+                        size: 20, 20 #tamanho da img
+                        pos: self.pos[0] + (self.width - 20)/2, self.pos[1] + (self.height - 20)/2
+                      
+        RecycleView:
+            id: listagem
+            
+            #nome da classe que será utilizada para criar cada linha
+            viewclass: 'Linha'
+            
+            #classe que define o layout do widget
+            RecycleBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                
+                #tamanho de cada linha
+                default_size_hint: 1, None #100% da largura e n define y
+                default_size: None, 40 #n define x e 40 pixels em y
+                
+        
+        Button:
+            size_hint_y: None
+            height: 35
+            text: 'Novo'
+            on_release: root.novo_contato()
+            
+<Visualizar>
+    on_pre_enter: root.preenche_dados()
+    
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 5
+        padding: 5
+        
+        Label: 
+            font_size: 20
+            text: 'Detalhes'
+            
+        Label: 
+            text:'Nome: '
+        
+        TextInput:
+            id: txNome
+            
+        Label:
+            text:'Telefone:'
+            
+        TextInput:
+            id:txTelefone
+        
+        Label:
+            text: 'Email: '
+        TextInput:
+            id:txEmail
+        
+        BoxLayout:
+            spacing: 3
+            
+            Button:
+                text: 'Editar'
+                id: btEditar
+                on_release: root.editar()
+            
+            Button:
+                text: 'Excluir'
+                id: btExcluir
+                on_release: root.excluir()
+            
+            Button
+                text:'Voltar'
+                on_release: root.voltar()
+
+
+                        

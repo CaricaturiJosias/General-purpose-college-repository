@@ -1,0 +1,81 @@
+<Principal>   
+    orientation: 'vertical'   
+    padding: 5
+    spacing: 5
+        
+    Label:
+        size_hint_y: None
+        height: 25    
+        text: 'Editar Aluno'
+        font_size: 20           
+  
+    BoxLayout:
+        Label:
+            text: 'Id:'
+            size_hint_x: None
+            width: 40
+            pos_hint: {'x':0.05,'center_y':0.50}
+
+            
+        TextInput:
+            id: id_busca
+            size_hint: (0.3,0.5)
+            pos_hint: {'center_y':0.5, 'center_x':0.7}
+        
+        Button:
+            text:'Buscar'
+            size_hint: (0.2,0.5)
+            width: 50
+            pos_hint: {'right':0.95, 'center_y':0.50}
+            on_release: root.busca_aluno()
+    
+    BoxLayout:
+        Label: 
+            text: 'Resultado:'
+            pos_hint: {'x':0.05}
+        Label:
+            id: mensagem
+            color: (1,0,0,1)
+    BoxLayout:
+        orientation: 'vertical'
+        
+        Label:
+            text:'Nome do Aluno'
+            font_size: 15
+        
+        TextInput:
+            id:nome_aluno
+            size_hint: (0.7,None)
+            height: 30
+            pos_hint: {'center_x':0.50}
+    BoxLayout:
+        orientation: 'vertical'
+        
+        Label:
+            text:'Curso'
+            font_size: 15
+        
+        TextInput:
+            id:curso_aluno
+            size_hint: (0.7,None)
+            height: 30
+            pos_hint: {'center_x':0.50}
+    BoxLayout:
+        orientation: 'vertical'
+        
+        Label:
+            text:'Idade'
+            font_size: 15
+        
+        TextInput:
+            id:idade_aluno
+            size_hint: (0.7,None)
+            height: 30
+            pos_hint: {'center_x':0.50}
+    BoxLayout:
+        Button:
+            text:'Salvar'
+            size_hint: (0.6,0.75)
+            pos_hint: {'center_y':0.5,'center_x':0.5}
+            fontsize: 15
+            on_release: root.Salvar()

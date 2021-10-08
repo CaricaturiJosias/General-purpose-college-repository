@@ -1,0 +1,33 @@
+CREATE TABLE turma (
+    codigo_turma INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome_turma VARCHAR(2,20) CONSTRAINT ck_nome_turma
+    CHECK(nome_turma in ('CSBA1','CSBA2','CSBA3','CSBA4','JosiasHotdog'))
+);
+
+CREATE TABLE matricula (
+    matricula_aluno INTEGER PRIMARY KEY AUTOINCREMENT,
+    codigo_turma_FK INTEGER NOT NULL,
+    nome_aluno VARCHAR(3,50) NOT NULL, 
+    data_nascimento DATE DEFAULT '2000-12-30',
+    FOREIGN KEY (codigo_turma_FK) REFERENCES turma(codigo_turma)
+);
+
+INSERT into turma    VALUES(NULL,'JosiasHotdog');
+INSERT into turma    VALUES(NULL,'CSBA1');
+INSERT into turma    VALUES(NULL,'CSBA2');
+INSERT into turma    VALUES(NULL,'CSBA3');
+INSERT into turma    VALUES(NULL,'CSBA4');
+
+SELECT * FROM turma;
+
+INSERT INTO matricula    VALUES(NULL,1,'Pedro','2000-06-16');
+INSERT INTO matricula    VALUES(NULL,1,'Joao','1996-03-26');
+INSERT INTO matricula    VALUES(NULL,1,'Josias','3000-12-25');
+INSERT INTO matricula    VALUES(NULL,1,'Jonathan','2001-04-21');
+INSERT INTO matricula    VALUES(NULL,1,'Dani','2000-09-19');
+INSERT INTO matricula    VALUES(NULL,1,'Marzio','1823-02-10');
+
+SELECT * FROM matricula;
+
+UPDATE matricula SET nome_aluno = "Joao silva souza carvalho rocha lima"
+WHERE  nome_aluno LIKE 'Joao%';

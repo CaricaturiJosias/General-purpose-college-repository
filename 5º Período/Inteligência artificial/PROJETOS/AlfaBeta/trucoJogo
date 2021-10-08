@@ -1,0 +1,5 @@
+class Fd:
+    def __init__(num_jogadores, num_cartas){
+        self.jogadores = num_jogadores
+        self.cartas = num_cartas
+    }
