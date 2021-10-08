@@ -7,9 +7,9 @@ computer engineering bachelor's degree course in pucpr
 
 # Items present in this repository:
 
-- CAD, specifically SolidWorks
+- CAD files, specifically SolidWorks
 
-- SQL, specifically MySQL
+- SQL scripts, specifically MySQL
 	
 - General programing languages, like Python, C/C++, Java, Assembly, Kivy
 
