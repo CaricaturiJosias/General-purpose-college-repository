@@ -12,8 +12,8 @@
 ; Replace with your application code
 start:
 	;configura baudrate
-	store	UBRR0L, 0xA0
-	store	UBRR0H, 0x01
+	store	UBRR0L, 0x00
+	store	UBRR0H, 0x68
 
 	;Config USART0
 	store	UCSR0A, 0b00100000

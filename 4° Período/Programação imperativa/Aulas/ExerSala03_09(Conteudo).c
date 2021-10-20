@@ -1,5 +1,5 @@
 #include <stdio.h>
-// não recebe e n devolve
+// não recebe e não devolve
 void printBomDia(){
     printf("Bom dia, sim?\n");
 }

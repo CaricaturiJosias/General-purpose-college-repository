@@ -17,7 +17,7 @@ start:
 tabela_r16:
 	ldi		ZL, LOW(tabela*2)
 	ldi		ZH, HIGH(tabela*2)
-	add		ZL, R16
+	add		ZL, R16	
 	lpm		r16, Z
 	adc		ZH, R16
 	ret

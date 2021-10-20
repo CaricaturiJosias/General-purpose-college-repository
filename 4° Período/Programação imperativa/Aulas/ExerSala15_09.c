@@ -1,47 +1,46 @@
 //palindrome
 #include <stdio.h>
 #include <string.h>
+#include <locale.h>
+#include <ctype.h>
 int main(){
     int i, compr;
     int palindrome = 0;
     char string1, string2;
     char *pc, *pc2;
-    pc = string1;
-    pc2 = string2;
+    pc = &string1;
+    pc2 = &string2;
     
     printf("Insira a palavra: ");
     scanf("%s", string1);
     
-    compr = (strlen(*pc)-1);
+    compr = (strlen(pc-1));
     //checagem caps lock
     
     for (i=0;i<compr+1;i++) {
-        *pc[i] = tolower(*pc[i]);
+        *(pc+i) = tolower(*(pc+i));
     }
     
     for (i=0;i<compr+1;i++) {
-        *pc2[i] = *pc[compr-i];
+        *(pc2+i) = *(pc+compr-i);
     } 
     
     for (i=0;i<compr+1;i++){
-        if (*pc[i] != *pc2[i]){
+        if (*(pc+i) != *(pc2+i)){
             palindrome = 1;
         }
     }
     
     if (palindrome==1){printf("A palavra nao e palindrome");}
     else {printf("A palavra e palindrome");}
-    
+    item();
     return 0;
 }
 
 
-#include<stdio.h>
-#include<string.h>
-#include<locale.h>
-#include <ctype.h>
 
-int main() {
+
+int item() {
  setlocale(LC_ALL, "");
  int i, valor = 0;
  char palavra[15], inversa[15];

@@ -5,7 +5,7 @@
 		in		R16, SREG
 		push	R16
 			ldi		R16, 6
-			out		TCNT0, R16
+			out		TCNT0, R16 
 		pop		R16
 		out		SREG, R16
 	POP		R16

@@ -2,19 +2,19 @@ create database Empresa_rastreamento;
 use Empresa_rastreamento;
 
 CREATE TABLE Cliente(
-    Nome_cliente varchar(50),
-	CPF char(11),
+    Nome_cliente varchar(100),
+	CPF char(11) unique,
     Telefone int,
-    Login varchar(32),
-    Senha varchar(32),
+    Login varchar(32) NOT NULL,
+    Senha varchar(32) NOT NULL,
     primary key (CPF)
 );
 
 CREATE TABLE Funcionario(
-    Data_contratacao date,
-    Salario float,
-    Nome_func varchar(50),
-    CPF_func char(11),
+    Data_contratacao date NOT NULL,
+    Salario float NOT NULL,
+    Nome_func varchar(100) NOT NULL,
+    CPF_func char(11) unique NOT NULL,
     Telefone int,
     primary key (CPF_func)
 );
@@ -29,7 +29,7 @@ CREATE TABLE Vendedor(
 CREATE TABLE Pais(
 	ID_Pais int unique,
     Nome_pais varchar(50),
-    Sigla_pais char(3),
+    Sigla_pais char(3) unique,
     primary key(ID_Pais)
 );
 
@@ -37,8 +37,8 @@ CREATE TABLE Estado(
 	ID_Estado int unique,
     ID_Pais int,
     Nome_est varchar(50),
-    Sigla_est char(2),
-    primary key(ID_Estado),
+    Sigla_estado char(2) unique,
+    primary key(ID_Estado, ID_Pais),
     foreign key (ID_Pais) references Pais(ID_Pais)
 );
 
@@ -46,14 +46,14 @@ CREATE TABLE Cidade(
 	ID_Cidade int unique,
     ID_Estado int,
     Nome_cidade varchar(50),
-    Sigla_cid char(3),
-    primary key(ID_Cidade),
+    Sigla_cidade char(3) unique,
+    primary key(ID_Cidade, ID_Estado),
     foreign key (ID_Estado) references Estado(ID_Estado)
 );
 
 CREATE TABLE Instalador (
 	ID_Instalador int unique,
-    Nome_instalador varchar(50),
+    Nome_instalador varchar(100),
     ID_Cidade int,
     CPF_Func char(11),
     primary key (ID_Instalador),
@@ -63,7 +63,7 @@ CREATE TABLE Instalador (
 
 CREATE TABLE Instalador_externo (
 	ID_Instalador int unique,
-    Nome_instalador_ex varchar(50),
+    Nome_instalador varchar(100),
     ID_Cidade int,
     primary key (ID_Instalador),
     foreign key (ID_Cidade) references Cidade (ID_Cidade)
@@ -113,13 +113,12 @@ CREATE TABLE Rastreador(
 );
 
 CREATE TABLE Negociado(
-	ID_Negocio int unique,
-    Valor float,
+	Placa char(7) NOT NULL,
     ID_Rastreador int,
-    Placa char(7),
-    ID_Vendedor int,
-    CPF char(11) not null,
-	primary key (ID_Negocio),
+    ID_Vendedor int NOT NULL,
+    CPF char(11) not null NOT NULL,
+    negociado float NOT NULL,
+	primary key (Placa, ID_Rastreador, ID_Vendedor, CPF),
     foreign key (ID_Rastreador) references Rastreador(ID_Rastreador),
     foreign key (Placa) references Veiculo(PlacaV),
     foreign key (ID_Vendedor) references Vendedor(ID_Vendedor),
@@ -128,102 +127,124 @@ CREATE TABLE Negociado(
 
 CREATE TABLE Rastreado(
 	Comodato bool default false,
-    Placa char(7),
-    ID_Rastreador int,
+    Placa char(7) NOT NULL,
+    ID_Rastreador int NOT NULL,
+    primary key(Placa, ID_Rastreador),
     foreign key (Placa) references Veiculo(PlacaV),
     foreign key (ID_Rastreador) references Rastreador(ID_Rastreador)
 );
 
 CREATE TABLE Instalacoes(
-	ID_Rastreador int,
-    ID_Instalador int,
-    Placa char(7),
-    Data_instalacao date,
+	ID_Rastreador int NOT NULL,
+    ID_Instalador int NOT NULL,
+    Placa char(7) NOT NULL,
+    Data_instalacao date NOT NULL,
+    primary key(ID_Rastreador, ID_Instalador,Placa, Data_Instalacao),
     foreign key (ID_Rastreador) references Rastreador(ID_Rastreador),
     foreign key (Placa) references Veiculo(PlacaV),
     foreign key (ID_Instalador) references Instalador(ID_Instalador)
 );
 
 CREATE TABLE Instalacoes_externas(
-	ID_Rastreador int,
-    ID_Instalador int,
-    Placa char(7),
-    Data_instalacao date,
+	ID_Rastreador int NOT NULL,
+    ID_Instalador int NOT NULL,
+    Placa char(7) NOT NULL,
+    Data_instalacao date NOT NULL,
+    primary key(ID_Rastreador, ID_Instalador,Placa, Data_Instalacao),
     foreign key (ID_Rastreador) references Rastreador(ID_Rastreador),
     foreign key (Placa) references Veiculo(PlacaV),
     foreign key (ID_Instalador) references Instalador_externo(ID_Instalador)
 );
 
 CREATE TABLE Permissao_Acesso(
-	Placa char(7),
-    CPF char(11),
+	Placa char(7) NOT NULL,
+    CPF char(11) NOT NULL,
+    primary key(Placa, CPF),
     foreign key (Placa) references Veiculo(PlacaV),
     foreign key (CPF) references Cliente(CPF) 
 );
 
 INSERT INTO PAIS VALUES (1, "Brasil", "BRA");
-INSERT INTO ESTADO VALUES(1, 1, "Parana", "PR");
-INSERT INTO ESTADO VALUES(2, 1, "Sao Paulo", "SP");
-INSERT INTO CIDADE VALUES(1,1,"Curitiba", "CWB");
-INSERT INTO CIDADE VALUES(2,1,"Londrina", "LBD");
-INSERT INTO CIDADE VALUES(3,2,"São Paulo", "CGH");
-INSERT INTO CIDADE VALUES(4,2,"Campinas", "VCP");
 
-INSERT INTO COR VALUES(1, "Azul");
-INSERT INTO COR VALUES(2, "Vermelho");
-INSERT INTO COR VALUES(3, "Verde");
-INSERT INTO COR VALUES(4, "Amarelo");
-INSERT INTO MARCA VALUES(1, "Ford");
-INSERT INTO MARCA VALUES(2, "Renault");
-INSERT INTO MODELO VALUES(1,1,"Pinto");
-INSERT INTO MODELO VALUES(2,2,"Twingo");
-INSERT INTO MODELORASTREADOR VALUES(1, "st310");
-INSERT INTO MODELORASTREADOR VALUES(2, "st310u");
-INSERT INTO RASTREADOR VALUES(1, 1);
-INSERT INTO RASTREADOR VALUES(2, 1);
-INSERT INTO RASTREADOR VALUES(3, 2);
-INSERT INTO RASTREADOR VALUES(4, 2);
-INSERT INTO CLIENTE VALUES("Nome A", "12312312312", 111111111, "Login A", "Senha A");
-INSERT INTO CLIENTE VALUES("Nome B", "45645645645", 222222222, "Login B", "Senha B");
-INSERT INTO CLIENTE VALUES("Nome C", "78978978978", 333333333, "Login C", "Senha C");
-INSERT INTO CLIENTE VALUES("Nome D", "99999999999", 333333333, "Login D", "Senha D");
-INSERT INTO VEICULO VALUES("BRA1A11", 2, 1, 2000);
-INSERT INTO VEICULO VALUES("BRA2A22", 2, 2, 1995);
-INSERT INTO VEICULO VALUES("BRA3A33", 1, 4, 1975);
-INSERT INTO FUNCIONARIO VALUES ("2020-08-30", 2001.50, "Funcionario 1", "11122233344", 444444444);
-INSERT INTO FUNCIONARIO VALUES ("2015-10-25", 4500, "Funcionario 2", "22233344455", 555555555);
-INSERT INTO FUNCIONARIO VALUES ("1998-02-16", 10000, "Funcionario 3", "33344455566", 666666666);
-INSERT INTO FUNCIONARIO VALUES ("2018-03-01", 6200, "Funcionario 4", "44455566677", 777777777);
-INSERT INTO FUNCIONARIO VALUES ("2007-07-26", 4300, "Funcionario 5", "55566677788", 888888888);
-INSERT INTO INSTALADOR VALUES(1,"Instalador A", 1, "33344455566");
-INSERT INTO INSTALADOR VALUES(2,"Instalador B", 2, "44455566677");
-INSERT INTO INSTALADOR VALUES(3,"Instalador C", 2, "55566677788");
-INSERT INTO INSTALADOR VALUES(4,"Instalador D", 3, "22233344455");
-INSERT INTO INSTALADOR_EXTERNO VALUES(1,"Instalador EA", 1);
-INSERT INTO INSTALADOR_EXTERNO VALUES(2,"Instalador EB", 2);
-INSERT INTO INSTALADOR_EXTERNO VALUES(3,"Instalador EC", 4);
-INSERT INTO INSTALADOR_EXTERNO VALUES(4,"Instalador ED", 4);
-INSERT INTO VENDEDOR VALUES (1,"11122233344");
-INSERT INTO VENDEDOR VALUES (2,"22233344455");
-INSERT INTO NEGOCIADO VALUES (1, 95, 1, "BRA1A11", 1, "12312312312");
-INSERT INTO NEGOCIADO VALUES (2, 155, 2, "BRA2A22", 1, "45645645645");
-INSERT INTO NEGOCIADO VALUES (3, 155, 2, "BRA3A33", 1, "45645645645");
-INSERT INTO PERMISSAO_ACESSO VALUES("BRA1A11", "12312312312");
-INSERT INTO PERMISSAO_ACESSO VALUES("BRA1A11", "45645645645");
-INSERT INTO PERMISSAO_ACESSO VALUES("BRA1A11", "99999999999");
-INSERT INTO PERMISSAO_ACESSO VALUES("BRA2A22", "78978978978");
-INSERT INTO PERMISSAO_ACESSO VALUES("BRA2A22", "45645645645");
-INSERT INTO PERMISSAO_ACESSO VALUES("BRA3A33", "99999999999");
-INSERT INTO RASTREADO VALUES (1, "BRA1A11", 1);
-INSERT INTO RASTREADO VALUES (1, "BRA2A22", 2);
-INSERT INTO RASTREADO VALUES (1, "BRA3A33", 3);
-INSERT INTO INSTALACOES VALUES(1, 1, "BRA1A11", "2020-10-24");
-INSERT INTO INSTALACOES VALUES(2, 1, "BRA3A33", "2002-04-04");
-INSERT INTO INSTALACOES VALUES(3, 1, "BRA2A22", "2020-10-24");
-INSERT INTO INSTALACOES VALUES(4, 2, "BRA3A33", "2018-04-04");
-INSERT INTO INSTALACOES_EXTERNAS VALUES(3, 1, "BRA1A11", "2020-10-24");
-INSERT INTO INSTALACOES_EXTERNAS VALUES(4, 1, "BRA3A33", "2000-02-04");
-INSERT INTO INSTALACOES_EXTERNAS VALUES(4, 4, "BRA3A33", "1990-05-15");
+INSERT INTO ESTADO VALUES(1, 1, "Parana", "PR"),
+					     (2, 1, "Sao Paulo", "SP");
+
+INSERT INTO CIDADE VALUES(1,1,"Curitiba", "CWB"),
+						 (2,1,"Londrina", "LBD"),
+						 (3,2,"São Paulo", "CGH"),
+						 (4,2,"Campinas", "VCP");
+
+INSERT INTO COR VALUES(1, "Azul"),
+					  (2, "Vermelho"),
+					  (3, "Verde"),
+					  (4, "Amarelo");
+
+INSERT INTO MARCA VALUES(1, "Ford"),
+						(2, "Renault");
+
+INSERT INTO MODELO VALUES(1,1,"Pinto"),
+					     (2,2,"Twingo");
+
+INSERT INTO MODELORASTREADOR VALUES(1, "st310"),
+								   (2, "st310u");
+
+INSERT INTO RASTREADOR VALUES(1, 1),
+							 (2, 1),
+							 (3, 2),
+							 (4, 2);
+
+INSERT INTO CLIENTE VALUES("Nome A", "12312312312", 111111111, "Login A", "Senha A"),
+						  ("Nome B", "45645645645", 222222222, "Login B", "Senha B"),
+						  ("Nome C", "78978978978", 333333333, "Login C", "Senha C"),
+						  ("Nome D", "99999999999", 333333333, "Login D", "Senha D");
+
+INSERT INTO VEICULO VALUES("BRA1A11", 2, 1, 2000),
+						  ("BRA2A22", 2, 2, 1995),
+						  ("BRA3A33", 1, 4, 1975);
+
+INSERT INTO FUNCIONARIO VALUES ("2020-08-30", 2001.50, "Funcionario 1", "11122233344", 444444444),
+							   ("2015-10-25", 4500, "Funcionario 2", "22233344455", 555555555),
+							   ("1998-02-16", 10000, "Funcionario 3", "33344455566", 666666666),
+							   ("2018-03-01", 6200, "Funcionario 4", "44455566677", 777777777),
+							   ("2007-07-26", 4300, "Funcionario 5", "55566677788", 888888888);
+
+INSERT INTO INSTALADOR VALUES(1,"Instalador A", 1, "33344455566"),
+							 (2,"Instalador B", 2, "44455566677"),
+							 (3,"Instalador C", 2, "55566677788"),
+							 (4,"Instalador D", 3, "22233344455");
+
+INSERT INTO INSTALADOR_EXTERNO VALUES(1,"Instalador EA", 1),
+									 (2,"Instalador EB", 2),
+									 (3,"Instalador EC", 4),
+									 (4,"Instalador ED", 4);
+
+INSERT INTO VENDEDOR VALUES (1,"11122233344"),
+							(2,"22233344455");
+
+INSERT INTO NEGOCIADO(ID_Rastreador, negociado, ID_Vendedor, Placa, CPF) VALUES 
+															(1, 95, 1, "BRA1A11", "12312312312"),
+															(2, 155, 2, "BRA2A22", "45645645645"),
+															(3, 155, 2, "BRA3A33", "45645645645");
+                                                            
+INSERT INTO PERMISSAO_ACESSO VALUES("BRA1A11", "12312312312"),
+									("BRA1A11", "45645645645"),
+									("BRA1A11", "99999999999"),
+									("BRA2A22", "78978978978"),
+									("BRA2A22", "45645645645"),
+									("BRA3A33", "99999999999");
+                                    
+INSERT INTO RASTREADO VALUES (1, "BRA1A11", 1),
+							 (1, "BRA2A22", 2),
+							 (1, "BRA3A33", 3);
+                             
+INSERT INTO INSTALACOES VALUES(1, 1, "BRA1A11", "2020-10-24"),
+							  (2, 1, "BRA3A33", "2002-04-04"),
+							  (3, 1, "BRA2A22", "2020-10-24"),
+							  (4, 2, "BRA3A33", "2018-04-04");
+                              
+INSERT INTO INSTALACOES_EXTERNAS VALUES(3, 1, "BRA1A11", "2020-10-24"),
+									   (4, 1, "BRA3A33", "2000-02-04"),
+									   (4, 4, "BRA3A33", "1990-05-15");
 
 /*INFORMAÇÃO 1 - Rastreadores por cidade*/
 
@@ -231,10 +252,27 @@ SELECT Nome_cidade "Cidade", count(*)
 FROM Cidade
 INNER JOIN INSTALADOR on INSTALADOR.ID_Cidade = cidade.ID_Cidade
 INNER JOIN Instalacoes on INSTALADOR.ID_Instalador = instalacoes.ID_Instalador
-INNER JOIN Rastreador on INSTALACOES.ID_Rastreador = Rastreador.ID_Rastreador
-INNER JOIN ModeloRastreador on Rastreador.id_ModeloRastreador = ModeloRastreador.ID_ModeloRastreador
 Group by nome_cidade;
 
+/*Prova de conceito
+
+SELECT Nome_cidade "Cidade", count(*)
+FROM Cidade
+INNER JOIN INSTALADOR on INSTALADOR.ID_Cidade = cidade.ID_Cidade
+INNER JOIN Instalacoes on INSTALADOR.ID_Instalador = instalacoes.ID_Instalador
+INNER JOIN Rastreador on INSTALACOES.ID_Rastreador = Rastreador.ID_Rastreador
+INNER JOIN ModeloRastreador on Rastreador.id_ModeloRastreador = ModeloRastreador.ID_ModeloRastreador
+WHERE nome_cidade = "Londrina"
+Group by nome_cidade;
+
+Resultado esperado
++---------------------------------+
+|Cidade   | Count(*)              | 
+|---------------------------------|
+|Londrina | 1                     |
++---------------------------------+
+
+*/
 /*INFORMAÇÃO 2 - Motoristas permitidos a dirigir um carro*/
 
 SELECT PlacaV "Placa", nome_cliente "Nome do cliente"
@@ -242,88 +280,246 @@ From veiculo
 INNER JOIN permissao_acesso on veiculo.placaV = permissao_acesso.placa
 INNER JOIN cliente on cliente.cpf = permissao_acesso.cpf
 Group by veiculo.placaV, cliente.nome_cliente;
+/*	
+WHERE veiculo.placaV = "placa"
+*/
+/*POC - Prova de conceito
+SELECT PlacaV "Placa", nome_cliente "Nome do cliente"
+From veiculo
+INNER JOIN permissao_acesso on veiculo.placaV = permissao_acesso.placa
+INNER JOIN cliente on cliente.cpf = permissao_acesso.cpf
+WHERE veiculo.placaV = "BRA2A22"
+Group by veiculo.placaV, cliente.nome_cliente;
+
+Resultado esperado
++---------------------------------+
+|Placa   | Nome do cliente        |
+|---------------------------------|
+|BRA2A22 | Nome B                 |
+|---------------------------------|
+|BRA2A22 | Nome C
++---------------------------------+
+*/
 
 /*INFORMAÇÃO 3 - Vendas por vendedor*/
 
-SELECT nome_func "Nome do vendedor", valor,  nome_cliente "Nome do cliente"
+SELECT nome_func "Nome do vendedor", COUNT(*)
 FROM funcionario
 INNER JOIN vendedor on funcionario.cpf_func = vendedor.cpf_func
 INNER JOIN Negociado on vendedor.id_vendedor = Negociado.id_vendedor
-INNER JOIN Cliente on Negociado.CPF = Cliente.CPF
-Group by valor, funcionario.nome_func, cliente.nome_cliente;
+GROUP BY nome_func
+order by count(*) desc;
+/*
+SELECT nome_func "Nome do vendedor", COUNT(*)
+FROM funcionario
+INNER JOIN vendedor on funcionario.cpf_func = vendedor.cpf_func
+INNER JOIN Negociado on vendedor.id_vendedor = Negociado.id_vendedor
+WHERE funcionario.nome_func = "Funcionario 2"
+
+Resultado esperado
++---------------------------------+
+|Nome do vendedor  | Count(*)     | 
+|---------------------------------|
+|Funcionario 2     | 2            |
++---------------------------------+
+
+*/
 
 /*INFORMAÇÃO 4 - Instalações por cidade*/
 
-SELECT nome_cidade "Cidade", COUNT(*)
+SELECT nome_cidade "Cidade", COUNT(*) "Quantidade"
 FROM cidade
 INNER JOIN instalador on instalador.id_cidade = cidade.id_cidade
 INNER JOIN instalacoes on instalacoes.id_instalador = instalador.id_instalador
 group by nome_cidade
-order by COUNT(*) desc;
+order by "Quantidade" desc;
 
-SELECT nome_cidade "Cidade", COUNT(*)
+/*POC
+SELECT nome_cidade "Cidade", COUNT(*) "Quantidade"
+FROM cidade
+INNER JOIN instalador on instalador.id_cidade = cidade.id_cidade
+INNER JOIN instalacoes on instalacoes.id_instalador = instalador.id_instalador
+where cidade.nome_cidade = "Curitiba" or "São Paulo"
+group by nome_cidade
+order by "Quantidade" desc;
+
+Resultado esperado
++---------------------------------+
+|Cidade   | Quantidade            | 
+|---------------------------------|
+|Curitiba | 3                     |
++---------------------------------+
+*/
+
+SELECT nome_cidade "Cidade", COUNT(*) "Quantidade"
 FROM cidade
 INNER JOIN instalador_externo on instalador_externo.id_cidade = cidade.id_cidade
 INNER JOIN instalacoes_externas on instalacoes_externas.id_instalador = instalador_externo.id_instalador
 group by nome_cidade
-order by COUNT(*) desc;
+order by "Quantidade" desc;
 
-/*INFORMAÇÃO 5 - Veículos que um cliente tem rastreado em seu nome*/
+/*INFORMAÇÃO 5 - Clientes com mais veículos rastreados em seu nome*/
 
-SELECT nome_cliente "Cliente", placaV "Placa registrada"
+SELECT nome_cliente "Cliente", COUNT(*) "Carros que tem em seu nome"
 from cliente
 INNER JOIN negociado on negociado.CPF = cliente.CPF
-INNER JOIN veiculo on veiculo.placav = negociado.placav
-group by nome_cliente, veiculo.placa;
+INNER JOIN veiculo on veiculo.placav = negociado.placa
+INNER JOIN Rastreado on veiculo.placav = rastreado.placa
+group by nome_cliente, veiculo.placav
+order by "Quantidade" desc;
+/*POC
+SELECT nome_cliente "Cliente", COUNT(*) "Carros que tem em seu nome"
+from cliente
+INNER JOIN negociado on negociado.CPF = cliente.CPF
+INNER JOIN veiculo on veiculo.placav = negociado.placa
+INNER JOIN Rastreado on veiculo.placav = rastreado.placa
+where cliente.nome_cliente = "Nome A"
+group by nome_cliente, veiculo.placav
+order by "Quantidade" desc;
 
-/*INFORMAÇÃO 6 - Veiculos que um cliente tem acesso para dirigir*/
+Resultado esperado
++--------------------------------------+
+|Cliente| Carros que tem em seu nome   |
+|--------------------------------------|
+|Nome A | 1                            |
++--------------------------------------+
+*/
 
-SELECT placav "Placa do carro", nome_cliente "Cliente com acesso"
+/*INFORMAÇÃO 6 - Veiculos com maior número de pessoas com acesso a ele*/
+
+SELECT placav "Placa do carro", COUNT(*) "Clientes com acesso"
 from veiculo
-INNER JOIN permissao_acesso on veiculo.Placav = permissao_acesso.Placav
-INNER JOIN cliente on permissao_acesso.CPF = cliente.CPF
-group by placav, cliente.nome_cliente;
+INNER JOIN permissao_acesso on veiculo.Placav = permissao_acesso.Placa
+group by placav, "Quantidade"
+order by "Quantidade" desc;
+/* POC
+SELECT placav "Placa do carro", COUNT(*) "Clientes com acesso"
+from veiculo
+INNER JOIN permissao_acesso on veiculo.Placav = permissao_acesso.Placa
+WHERE veiculo.placav = "BRA2A22"
+group by placav, "Quantidade"
+order by "Quantidade" desc;
 
+Resultado esperado
++--------------------------------------+
+|Placa do carro| Clientes com acesso   |
+|--------------------------------------|
+|BRA2A22       |2                      |
++--------------------------------------+
+*/
 /*INFORMAÇÃO 7 - Instalações externas a empresa por estado*/
 
-SELECT Nome_est "Estado", count(*)
+SELECT Nome_est "Estado", count(*) "Quantidade de instalações"
 FROM Estado
 INNER JOIN Cidade on cidade.id_estado = estado.id_estado
 INNER JOIN INSTALADOR_externo on INSTALADOR_externo.ID_Cidade = cidade.ID_Cidade
 INNER JOIN Instalacoes_externas on INSTALADOR_externo.ID_Instalador = instalacoes_externas.ID_Instalador
-INNER JOIN Rastreador on INSTALACOES_externas.ID_Rastreador = Rastreador.ID_Rastreador
-INNER JOIN ModeloRastreador on Rastreador.id_ModeloRastreador = ModeloRastreador.ID_ModeloRastreador
 Group by nome_est
-ORDER BY COUNT(*) desc;
+ORDER BY "Quantidade" desc;
+
+/* POC
+SELECT Nome_est "Estado", count(*) "Quantidade de instalações"
+FROM Estado
+INNER JOIN Cidade on cidade.id_estado = estado.id_estado
+INNER JOIN INSTALADOR_externo on INSTALADOR_externo.ID_Cidade = cidade.ID_Cidade
+INNER JOIN Instalacoes_externas on INSTALADOR_externo.ID_Instalador = instalacoes_externas.ID_Instalador
+WHERE Estado.Nome_est = "Parana"
+Group by nome_est
+ORDER BY "Quantidade" desc;
+
+Resultado esperado
++-----------------------------------+
+|Estado  | Quantidade de instalações|
+|-----------------------------------|
+|Paraná  | 2                        |
++-----------------------------------+
+*/
 
 /*INFORMACAO 8 - Instalacoes externas por cidade (semelhante a informação 1)*/
 
-SELECT Nome_cidade "Cidade", count(*)
+SELECT Nome_cidade "Cidade", count(*) "Quantidade de instalações"
 FROM Cidade
 INNER JOIN INSTALADOR_externo on INSTALADOR_externo.ID_Cidade = cidade.ID_Cidade
 INNER JOIN Instalacoes_externas on INSTALADOR_externo.ID_Instalador = instalacoes_externas.ID_Instalador
-INNER JOIN Rastreador on INSTALACOES_externas.ID_Rastreador = Rastreador.ID_Rastreador
-INNER JOIN ModeloRastreador on Rastreador.id_ModeloRastreador = ModeloRastreador.ID_ModeloRastreador
 Group by nome_cidade;
 
+/* POC
+SELECT Nome_cidade "Cidade", count(*) "Quantidade de instalações"
+FROM Cidade
+INNER JOIN INSTALADOR_externo on INSTALADOR_externo.ID_Cidade = cidade.ID_Cidade
+INNER JOIN Instalacoes_externas on INSTALADOR_externo.ID_Instalador = instalacoes_externas.ID_Instalador
+WHERE Cidade.Nome_cidade = "Campinas"
+Group by nome_cidade;
+
+Resultado esperado
++------------------------------------+
+|Cidade   | Quantidade de instalações|
+|------------------------------------|
+|Campinas | 1                        |
++------------------------------------+
+*/
+
 /*INFORMAÇÃO 9 - Carros rastreados por modelo de rastreador por cidade*/
-SELECT Modelo, nome_cidade, count(*)
+SELECT Modelo"Modelo do rastreador", nome_cidade"Cidade", count(*) "Quantidade de rastreados"
 from ModeloRastreador
 INNER JOIN Rastreador on Rastreador.id_ModeloRastreador = ModeloRastreador.id_ModeloRastreador
 INNER JOIN instalacoes on rastreador.id_rastreador = instalacoes.id_rastreador
-INNER JOIN veiculo on instalacoes.Placav = veiculo.Placav
+INNER JOIN veiculo on instalacoes.Placa = veiculo.Placav
 INNER JOIN instalador on instalador.id_instalador = instalacoes.id_instalador
 INNER JOIN cidade on instalador.id_cidade = cidade.id_cidade
 Group by ModeloRastreador.Modelo, cidade.nome_cidade
-Order by Count(*) desc;
+Order by "Quantidade" desc;
+
+/*POC
+SELECT nome_cidade"Cidade", count(*) "Quantidade de rastreados"
+from ModeloRastreador
+INNER JOIN Rastreador on Rastreador.id_ModeloRastreador = ModeloRastreador.id_ModeloRastreador
+INNER JOIN instalacoes on rastreador.id_rastreador = instalacoes.id_rastreador
+INNER JOIN veiculo on instalacoes.Placa = veiculo.Placav
+INNER JOIN instalador on instalador.id_instalador = instalacoes.id_instalador
+INNER JOIN cidade on instalador.id_cidade = cidade.id_cidade
+WHERE ModeloRastreador.Modelo = "st310u"
+Group by cidade.nome_cidade
+Order by "Quantidade" desc;
+
+Resultado esperado
++-------------------------------------+
+| Cidade   | Quantidade de rastreados |
+|-------------------------------------|
+| Curitiba | 1                        |
+|-------------------------------------|
+| Londrina | 1                        |
++-------------------------------------+
+*/
 
 /*INFORMAÇÃO 10 - Modelo de rastreadores instalador por marca de veiculo*/
-SELECT nome_marca, Modelo, count(*)
-FROM marca
-INNER JOIN Modelo on marca.id_marca = modelo.id_modelo
-INNER JOIN veiculo on modelo.id_modelo = veiculo.id_modelo
-INNER JOIN instalacoes on veiculo.Placav = instalacoes.Placav
-INNER JOIN Rastreador on rastreador.id_rastreador = instalacoes.id_rastreador
-INNER JOIN ModeloRastreador on rastreador.id_ModeloRastreador = Rastreador.id_ModeloRastreador
-Group by Marca.nome_marca, ModeloRastreador.Modelo
-Order by count(*) desc;
+SELECT nome_marca "Marca do veículo", count(*) "Quantidade de rastreados"
+FROM ModeloRastreador
+INNER JOIN Rastreador on rastreador.id_ModeloRastreador = ModeloRastreador.id_ModeloRastreador
+INNER JOIN instalacoes on rastreador.id_rastreador = instalacoes.id_rastreador
+INNER JOIN veiculo on veiculo.Placav = instalacoes.Placa
+INNER JOIN Modelo on modelo.id_modelo = veiculo.id_modelo
+INNER JOIN Marca  on Modelo.ID_Marca = Marca.ID_Marca 
+Group by Marca.nome_marca
+Order by "Quantidade de rastreados" desc;
+
+/*POC
+SELECT nome_marca"Marca do veículo", count(*) "Quantidade de rastreados"
+FROM ModeloRastreador
+INNER JOIN Rastreador on rastreador.id_ModeloRastreador = ModeloRastreador.id_ModeloRastreador
+INNER JOIN instalacoes on rastreador.id_rastreador = instalacoes.id_rastreador
+INNER JOIN veiculo on veiculo.Placav = instalacoes.Placa
+INNER JOIN Modelo on modelo.id_modelo = veiculo.id_modelo
+INNER JOIN Marca  on Modelo.ID_Marca = Marca.ID_Marca 
+Where ModeloRastreador.Modelo = "st310"
+Group by Marca.nome_marca
+Order by "Quantidade de rastreados" desc;
+
++---------------------------------------------+
+| Marca do veículo | Quantidade de rastreados |
+|---------------------------------------------|
+| Renault          | 2                        |
+|---------------------------------------------|
+| Ford             | 2                        |
++---------------------------------------------+
+*/

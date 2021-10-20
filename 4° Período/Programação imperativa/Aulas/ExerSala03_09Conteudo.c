@@ -26,7 +26,7 @@ float aumentaPor(float valor, float porcentagem){
 
 //Funções
 
-void main() {
+int main() {
     char adeus[] = "Tchau, sim";
     float h;
 
@@ -36,4 +36,5 @@ void main() {
     printf ("Caso tivesse 20 a mais, teria %.2f m de altura\n", aumentaPor(h, 20)); 
     
     printMensagem(adeus);
+    return 0;
 }

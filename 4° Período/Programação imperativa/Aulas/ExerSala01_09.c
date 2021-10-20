@@ -1,15 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #define TAM 4
 
 int main(){
     int m[TAM][TAM];
-    int i, j, *p, achou;
-
+    int i, j, achou; 
     // quero ler 16 numeros, que não se repitam
     //passos: 1-ler o numero, 2-checar, 2.1se for repetido negar, 2.2se não continuar
-    srand(time(NULL));
-    p = m;
+    srand((unsigned)time(NULL));
+    int *p;
+    p = &m;
 
     for (i=0; i<TAM*TAM; i++){
         *(p+i) = 1 + rand() % 16;

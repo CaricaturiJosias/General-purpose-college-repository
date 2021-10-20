@@ -30,9 +30,6 @@ repete:
 	;sts		ADMUX,R16
 
 	rcall	adc_conv 
-
-
-
 	out		PORTD,R16
 
 	rjmp	repete
