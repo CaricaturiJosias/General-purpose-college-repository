@@ -148,13 +148,12 @@ ArvBin::~ArvBin()
 
 void ArvBin::destrutor(No * no)
 {
-    if (esq(no)!= nullptr){
+    if (no)!= nullptr){
         destrutor(esq(no));
-    }    
-    if (dir(no) != nullptr){
         destrutor(dir(no));
+        delete(no);
     }
-    delete(no);
+    
 }
 
 void ArvBin::adiciona(TipoDado x)
