@@ -23,4 +23,3 @@ int main(){
     cout << endl << pot(2, 8) << endl;
     return 0;
 }
-
