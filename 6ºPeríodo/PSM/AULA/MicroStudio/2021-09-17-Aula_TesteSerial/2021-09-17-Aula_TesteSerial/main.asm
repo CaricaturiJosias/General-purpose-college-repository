@@ -12,14 +12,16 @@
 ; Replace with your application code
 start:
 	;configura baudrate
-	store	UBRR0L, 0x00
-	store	UBRR0H, 0x68
+	store	UBRR0H, 0x00
+	store	UBRR0L, 0xCF
 
 	;Config USART0
-	store	UCSR0A, 0b00100000
-	store	UCSR0B, 0b00011000
-	store	UCSR0C, 0b00000110
+	store	UCSR0A, 0x02
+	store	UCSR0B, 0x18
+	store	UCSR0C, 0x06
 
+	ldi		R16, 65
+	sts		UDR0, R16
 fim:	
 	rcall	rx_R16
 	inc		R16
@@ -46,7 +48,3 @@ rx_R16_loop:
 	;Le o valor de UDR0 e colocao em r16
 	lds		R16, UDR0
 	ret		
-
-	;	para casa
-	;	Alterar o baudrate para 9600bps
-	;	Iniciar a execução imprimindo uma string qualquer e então faz o que tem que fazer
