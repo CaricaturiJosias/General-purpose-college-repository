@@ -1,0 +1,31 @@
+subdesign rom(
+	address[7..0]: input;
+	clk: input;
+	ena_clk: input;
+	data[11..0]: output; 
+)
+variable
+	addr_ffs[7..0]: dffe;
+begin
+	addr_ffs[].clk = clk;
+	addr_ffs[].ena = ena_clk;
+	addr_ffs[].d = address[];
+	case addr_ffs[].q is
+		when 0 =>
+			data[] = h"000";
+		when 1 =>
+			data[] = h"000";
+		when 2 =>
+			data[] = h"000";
+		when 3 =>
+			data[] = h"000";
+		when 4 =>
+			data[] = h"000";
+		when 5 =>
+			data[] = h"000";
+		when 6 =>
+			data[] = h"000";
+		when others =>
+			data[] = h"000";
+	end case;
+end;

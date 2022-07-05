@@ -1,0 +1,579 @@
+Timing Analyzer report for processador
+Wed Apr 27 22:33:37 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Fmax Summary
+  6. Setup Summary
+  7. Hold Summary
+  8. Recovery Summary
+  9. Removal Summary
+ 10. Minimum Pulse Width Summary
+ 11. Setup: 'clk'
+ 12. Hold: 'clk'
+ 13. Setup Transfers
+ 14. Hold Transfers
+ 15. Report TCCS
+ 16. Report RSKM
+ 17. Unconstrained Paths Summary
+ 18. Clock Status Summary
+ 19. Unconstrained Input Ports
+ 20. Unconstrained Output Ports
+ 21. Unconstrained Input Ports
+ 22. Unconstrained Output Ports
+ 23. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-----------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                     ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                              ;
+; Revision Name         ; processador                                         ;
+; Device Family         ; MAX II                                              ;
+; Device Name           ; EPM570T144C5                                        ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Slow Model                                          ;
+; Rise/Fall Delays      ; Unavailable                                         ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++-------------------------------------------------+
+; Fmax Summary                                    ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 41.25 MHz ; 41.25 MHz       ; clk        ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++---------------------------------+
+; Setup Summary                   ;
++-------+---------+---------------+
+; Clock ; Slack   ; End Point TNS ;
++-------+---------+---------------+
+; clk   ; -23.241 ; -911.541      ;
++-------+---------+---------------+
+
+
++-------------------------------+
+; Hold Summary                  ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 1.384 ; 0.000         ;
++-------+-------+---------------+
+
+
+--------------------
+; Recovery Summary ;
+--------------------
+No paths to report.
+
+
+-------------------
+; Removal Summary ;
+-------------------
+No paths to report.
+
+
++--------------------------------+
+; Minimum Pulse Width Summary    ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -2.289 ; -2.289        ;
++-------+--------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk'                                                                                                                  ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; -23.241 ; rom:inst4|addr_ffs[5] ; registrador:R1|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.908     ;
+; -23.231 ; rom:inst4|addr_ffs[5] ; registrador:R0|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.898     ;
+; -23.118 ; rom:inst4|addr_ffs[5] ; registrador:R1|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.785     ;
+; -23.111 ; rom:inst4|addr_ffs[5] ; registrador:PC|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.778     ;
+; -23.110 ; rom:inst4|addr_ffs[5] ; registrador:R0|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.777     ;
+; -23.093 ; rom:inst4|addr_ffs[5] ; registrador:PC|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.760     ;
+; -23.065 ; rom:inst4|addr_ffs[5] ; registrador:R0|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.732     ;
+; -23.056 ; rom:inst4|addr_ffs[5] ; registrador:PC|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.723     ;
+; -23.056 ; rom:inst4|addr_ffs[6] ; registrador:R1|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.723     ;
+; -23.046 ; rom:inst4|addr_ffs[6] ; registrador:R0|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.713     ;
+; -23.020 ; rom:inst4|addr_ffs[5] ; registrador:R1|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.687     ;
+; -22.933 ; rom:inst4|addr_ffs[6] ; registrador:R1|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.600     ;
+; -22.926 ; rom:inst4|addr_ffs[6] ; registrador:PC|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.593     ;
+; -22.925 ; rom:inst4|addr_ffs[6] ; registrador:R0|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.592     ;
+; -22.914 ; rom:inst4|addr_ffs[4] ; registrador:R1|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.581     ;
+; -22.908 ; rom:inst4|addr_ffs[6] ; registrador:PC|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.575     ;
+; -22.904 ; rom:inst4|addr_ffs[4] ; registrador:R0|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.571     ;
+; -22.880 ; rom:inst4|addr_ffs[6] ; registrador:R0|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.547     ;
+; -22.871 ; rom:inst4|addr_ffs[6] ; registrador:PC|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.538     ;
+; -22.835 ; rom:inst4|addr_ffs[6] ; registrador:R1|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.502     ;
+; -22.791 ; rom:inst4|addr_ffs[4] ; registrador:R1|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.458     ;
+; -22.784 ; rom:inst4|addr_ffs[4] ; registrador:PC|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.451     ;
+; -22.783 ; rom:inst4|addr_ffs[4] ; registrador:R0|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.450     ;
+; -22.766 ; rom:inst4|addr_ffs[4] ; registrador:PC|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.433     ;
+; -22.738 ; rom:inst4|addr_ffs[4] ; registrador:R0|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.405     ;
+; -22.729 ; rom:inst4|addr_ffs[4] ; registrador:PC|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.396     ;
+; -22.693 ; rom:inst4|addr_ffs[4] ; registrador:R1|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.360     ;
+; -22.677 ; rom:inst4|addr_ffs[5] ; registrador:R0|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.344     ;
+; -22.674 ; rom:inst4|addr_ffs[5] ; registrador:R1|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.341     ;
+; -22.649 ; rom:inst4|addr_ffs[5] ; registrador:PC|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.316     ;
+; -22.633 ; rom:inst4|addr_ffs[5] ; inst3[3]              ; clk          ; clk         ; 1.000        ; 0.000      ; 23.300     ;
+; -22.597 ; rom:inst4|addr_ffs[5] ; registrador:PC|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.264     ;
+; -22.592 ; rom:inst4|addr_ffs[5] ; registrador:R0|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.259     ;
+; -22.589 ; rom:inst4|addr_ffs[5] ; registrador:PC|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.256     ;
+; -22.586 ; rom:inst4|addr_ffs[5] ; registrador:PC|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.253     ;
+; -22.584 ; rom:inst4|addr_ffs[5] ; registrador:R0|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.251     ;
+; -22.570 ; rom:inst4|addr_ffs[5] ; registrador:R0|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.237     ;
+; -22.533 ; rom:inst4|addr_ffs[2] ; registrador:R1|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.200     ;
+; -22.523 ; rom:inst4|addr_ffs[2] ; registrador:R0|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.190     ;
+; -22.492 ; rom:inst4|addr_ffs[6] ; registrador:R0|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.159     ;
+; -22.489 ; rom:inst4|addr_ffs[6] ; registrador:R1|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.156     ;
+; -22.464 ; rom:inst4|addr_ffs[6] ; registrador:PC|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.131     ;
+; -22.448 ; rom:inst4|addr_ffs[6] ; inst3[3]              ; clk          ; clk         ; 1.000        ; 0.000      ; 23.115     ;
+; -22.412 ; rom:inst4|addr_ffs[6] ; registrador:PC|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.079     ;
+; -22.410 ; rom:inst4|addr_ffs[2] ; registrador:R1|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.077     ;
+; -22.407 ; rom:inst4|addr_ffs[6] ; registrador:R0|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.074     ;
+; -22.404 ; rom:inst4|addr_ffs[6] ; registrador:PC|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.071     ;
+; -22.403 ; rom:inst4|addr_ffs[2] ; registrador:PC|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.070     ;
+; -22.402 ; rom:inst4|addr_ffs[2] ; registrador:R0|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.069     ;
+; -22.401 ; rom:inst4|addr_ffs[6] ; registrador:PC|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.068     ;
+; -22.399 ; rom:inst4|addr_ffs[6] ; registrador:R0|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.066     ;
+; -22.385 ; rom:inst4|addr_ffs[2] ; registrador:PC|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.052     ;
+; -22.385 ; rom:inst4|addr_ffs[6] ; registrador:R0|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.052     ;
+; -22.357 ; rom:inst4|addr_ffs[2] ; registrador:R0|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.024     ;
+; -22.350 ; rom:inst4|addr_ffs[4] ; registrador:R0|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.017     ;
+; -22.348 ; rom:inst4|addr_ffs[2] ; registrador:PC|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.015     ;
+; -22.347 ; rom:inst4|addr_ffs[4] ; registrador:R1|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 23.014     ;
+; -22.322 ; rom:inst4|addr_ffs[4] ; registrador:PC|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.989     ;
+; -22.314 ; rom:inst4|addr_ffs[7] ; registrador:R1|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.981     ;
+; -22.312 ; rom:inst4|addr_ffs[2] ; registrador:R1|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.979     ;
+; -22.306 ; rom:inst4|addr_ffs[4] ; inst3[3]              ; clk          ; clk         ; 1.000        ; 0.000      ; 22.973     ;
+; -22.304 ; rom:inst4|addr_ffs[7] ; registrador:R0|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.971     ;
+; -22.270 ; rom:inst4|addr_ffs[4] ; registrador:PC|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.937     ;
+; -22.265 ; rom:inst4|addr_ffs[4] ; registrador:R0|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.932     ;
+; -22.262 ; rom:inst4|addr_ffs[4] ; registrador:PC|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.929     ;
+; -22.259 ; rom:inst4|addr_ffs[4] ; registrador:PC|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.926     ;
+; -22.257 ; rom:inst4|addr_ffs[4] ; registrador:R0|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.924     ;
+; -22.243 ; rom:inst4|addr_ffs[4] ; registrador:R0|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.910     ;
+; -22.191 ; rom:inst4|addr_ffs[7] ; registrador:R1|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.858     ;
+; -22.184 ; rom:inst4|addr_ffs[7] ; registrador:PC|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.851     ;
+; -22.183 ; rom:inst4|addr_ffs[7] ; registrador:R0|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.850     ;
+; -22.166 ; rom:inst4|addr_ffs[7] ; registrador:PC|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.833     ;
+; -22.138 ; rom:inst4|addr_ffs[7] ; registrador:R0|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.805     ;
+; -22.136 ; rom:inst4|addr_ffs[1] ; registrador:R1|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.803     ;
+; -22.129 ; rom:inst4|addr_ffs[7] ; registrador:PC|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.796     ;
+; -22.126 ; rom:inst4|addr_ffs[1] ; registrador:R0|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.793     ;
+; -22.093 ; rom:inst4|addr_ffs[7] ; registrador:R1|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.760     ;
+; -22.093 ; rom:inst4|addr_ffs[1] ; registrador:PC|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.760     ;
+; -22.092 ; rom:inst4|addr_ffs[1] ; registrador:R0|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.759     ;
+; -22.013 ; rom:inst4|addr_ffs[1] ; registrador:R1|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.680     ;
+; -22.002 ; rom:inst4|addr_ffs[1] ; registrador:R1|FFs[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.669     ;
+; -21.988 ; rom:inst4|addr_ffs[1] ; registrador:PC|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.655     ;
+; -21.987 ; rom:inst4|addr_ffs[3] ; registrador:R1|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.654     ;
+; -21.977 ; rom:inst4|addr_ffs[3] ; registrador:R0|FFs[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.644     ;
+; -21.969 ; rom:inst4|addr_ffs[2] ; registrador:R0|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.636     ;
+; -21.966 ; rom:inst4|addr_ffs[2] ; registrador:R1|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.633     ;
+; -21.965 ; rom:inst4|addr_ffs[5] ; registrador:R1|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.632     ;
+; -21.960 ; rom:inst4|addr_ffs[1] ; registrador:R0|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.627     ;
+; -21.951 ; rom:inst4|addr_ffs[1] ; registrador:PC|FFs[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.618     ;
+; -21.941 ; rom:inst4|addr_ffs[2] ; registrador:PC|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.608     ;
+; -21.925 ; rom:inst4|addr_ffs[2] ; inst3[3]              ; clk          ; clk         ; 1.000        ; 0.000      ; 22.592     ;
+; -21.915 ; rom:inst4|addr_ffs[5] ; inst3[4]              ; clk          ; clk         ; 1.000        ; 0.000      ; 22.582     ;
+; -21.899 ; rom:inst4|addr_ffs[5] ; registrador:R1|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.566     ;
+; -21.889 ; rom:inst4|addr_ffs[2] ; registrador:PC|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.556     ;
+; -21.884 ; rom:inst4|addr_ffs[2] ; registrador:R0|FFs[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.551     ;
+; -21.881 ; rom:inst4|addr_ffs[2] ; registrador:PC|FFs[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.548     ;
+; -21.878 ; rom:inst4|addr_ffs[2] ; registrador:PC|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.545     ;
+; -21.876 ; rom:inst4|addr_ffs[2] ; registrador:R0|FFs[5] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.543     ;
+; -21.873 ; rom:inst4|addr_ffs[5] ; inst3[7]              ; clk          ; clk         ; 1.000        ; 0.000      ; 22.540     ;
+; -21.864 ; rom:inst4|addr_ffs[3] ; registrador:R1|FFs[4] ; clk          ; clk         ; 1.000        ; 0.000      ; 22.531     ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk'                                                                                                                 ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; 1.384 ; rom:inst4|addr_ffs[5] ; rom:inst4|addr_ffs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.605      ;
+; 1.410 ; rom:inst4|addr_ffs[7] ; rom:inst4|addr_ffs[7] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.631      ;
+; 1.410 ; rom:inst4|addr_ffs[3] ; rom:inst4|addr_ffs[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.631      ;
+; 1.661 ; sm:inst5|fetch        ; sm:inst5|fetch        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.882      ;
+; 2.023 ; rom:inst4|addr_ffs[0] ; rom:inst4|addr_ffs[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.244      ;
+; 2.139 ; sm:inst5|decod        ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 2.360      ;
+; 2.957 ; rom:inst4|addr_ffs[6] ; rom:inst4|addr_ffs[6] ; clk          ; clk         ; 0.000        ; 0.000      ; 3.178      ;
+; 3.015 ; sm:inst5|inc_PC       ; sm:inst5|decod        ; clk          ; clk         ; 0.000        ; 0.000      ; 3.236      ;
+; 3.273 ; sm:inst5|decod        ; sm:inst5|arit         ; clk          ; clk         ; 0.000        ; 0.000      ; 3.494      ;
+; 3.278 ; sm:inst5|decod        ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.499      ;
+; 3.733 ; sm:inst5|fetch        ; sm:inst5|inc_PC       ; clk          ; clk         ; 0.000        ; 0.000      ; 3.954      ;
+; 4.045 ; rom:inst4|addr_ffs[4] ; rom:inst4|addr_ffs[4] ; clk          ; clk         ; 0.000        ; 0.000      ; 4.266      ;
+; 4.221 ; rom:inst4|addr_ffs[0] ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.442      ;
+; 4.331 ; sm:inst5|decod        ; sm:inst5|fetch        ; clk          ; clk         ; 0.000        ; 0.000      ; 4.552      ;
+; 4.422 ; sm:inst5|inc_PC       ; sm:inst5|fetch        ; clk          ; clk         ; 0.000        ; 0.000      ; 4.643      ;
+; 4.526 ; rom:inst4|addr_ffs[0] ; sm:inst5|arit         ; clk          ; clk         ; 0.000        ; 0.000      ; 4.747      ;
+; 4.631 ; rom:inst4|addr_ffs[1] ; rom:inst4|addr_ffs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 4.852      ;
+; 4.698 ; rom:inst4|addr_ffs[0] ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.919      ;
+; 5.034 ; registrador:R1|FFs[1] ; rom:inst4|addr_ffs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.255      ;
+; 5.642 ; registrador:R0|FFs[5] ; rom:inst4|addr_ffs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.863      ;
+; 5.644 ; rom:inst4|addr_ffs[3] ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 5.865      ;
+; 5.661 ; registrador:R1|FFs[1] ; inst3[1]              ; clk          ; clk         ; 0.000        ; 0.000      ; 5.882      ;
+; 5.757 ; rom:inst4|addr_ffs[1] ; sm:inst5|arit         ; clk          ; clk         ; 0.000        ; 0.000      ; 5.978      ;
+; 5.844 ; rom:inst4|addr_ffs[2] ; rom:inst4|addr_ffs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.065      ;
+; 5.910 ; registrador:R0|FFs[0] ; rom:inst4|addr_ffs[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.131      ;
+; 5.929 ; rom:inst4|addr_ffs[1] ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 6.150      ;
+; 5.937 ; rom:inst4|addr_ffs[1] ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 6.158      ;
+; 5.971 ; rom:inst4|addr_ffs[7] ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 6.192      ;
+; 6.198 ; registrador:R1|FFs[2] ; rom:inst4|addr_ffs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.419      ;
+; 6.224 ; registrador:R1|FFs[5] ; rom:inst4|addr_ffs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.445      ;
+; 6.237 ; registrador:R1|FFs[0] ; rom:inst4|addr_ffs[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.458      ;
+; 6.255 ; sm:inst5|arit         ; rom:inst4|addr_ffs[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.476      ;
+; 6.269 ; registrador:R0|FFs[5] ; inst3[5]              ; clk          ; clk         ; 0.000        ; 0.000      ; 6.490      ;
+; 6.373 ; rom:inst4|addr_ffs[3] ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 6.594      ;
+; 6.427 ; sm:inst5|fetch        ; registrador:PC|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.648      ;
+; 6.472 ; sm:inst5|arit         ; rom:inst4|addr_ffs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.693      ;
+; 6.522 ; sm:inst5|jmp          ; registrador:PC|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.743      ;
+; 6.571 ; rom:inst4|addr_ffs[4] ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 6.792      ;
+; 6.595 ; registrador:R0|FFs[4] ; rom:inst4|addr_ffs[4] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.816      ;
+; 6.596 ; registrador:PC|FFs[5] ; rom:inst4|addr_ffs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.817      ;
+; 6.697 ; sm:inst5|reset_       ; rom:inst4|addr_ffs[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.918      ;
+; 6.700 ; rom:inst4|addr_ffs[7] ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 6.921      ;
+; 6.713 ; registrador:R0|FFs[3] ; rom:inst4|addr_ffs[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.934      ;
+; 6.713 ; rom:inst4|addr_ffs[6] ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 6.934      ;
+; 6.815 ; sm:inst5|arit         ; registrador:PC|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.036      ;
+; 6.834 ; sm:inst5|fetch        ; registrador:R0|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.055      ;
+; 6.851 ; registrador:R1|FFs[5] ; inst3[5]              ; clk          ; clk         ; 0.000        ; 0.000      ; 7.072      ;
+; 6.898 ; rom:inst4|addr_ffs[5] ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 7.119      ;
+; 6.905 ; sm:inst5|arit         ; rom:inst4|addr_ffs[7] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.126      ;
+; 6.912 ; sm:inst5|arit         ; rom:inst4|addr_ffs[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.133      ;
+; 6.929 ; sm:inst5|jmp          ; registrador:R0|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.150      ;
+; 6.942 ; sm:inst5|arit         ; rom:inst4|addr_ffs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.163      ;
+; 6.963 ; registrador:R0|FFs[0] ; inst3[0]              ; clk          ; clk         ; 0.000        ; 0.000      ; 7.184      ;
+; 7.021 ; registrador:PC|FFs[2] ; rom:inst4|addr_ffs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.242      ;
+; 7.025 ; sm:inst5|mov          ; registrador:PC|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.246      ;
+; 7.027 ; registrador:R1|FFs[1] ; registrador:R1|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.248      ;
+; 7.047 ; sm:inst5|arit         ; inst3[5]              ; clk          ; clk         ; 0.000        ; 0.000      ; 7.268      ;
+; 7.070 ; registrador:PC|FFs[3] ; rom:inst4|addr_ffs[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.291      ;
+; 7.119 ; registrador:PC|FFs[1] ; rom:inst4|addr_ffs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.340      ;
+; 7.175 ; rom:inst4|addr_ffs[2] ; sm:inst5|jmp          ; clk          ; clk         ; 0.000        ; 0.000      ; 7.396      ;
+; 7.176 ; sm:inst5|arit         ; rom:inst4|addr_ffs[6] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.397      ;
+; 7.176 ; sm:inst5|arit         ; rom:inst4|addr_ffs[4] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.397      ;
+; 7.218 ; sm:inst5|arit         ; registrador:R0|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.439      ;
+; 7.223 ; registrador:PC|FFs[5] ; inst3[5]              ; clk          ; clk         ; 0.000        ; 0.000      ; 7.444      ;
+; 7.251 ; registrador:R1|FFs[2] ; inst3[2]              ; clk          ; clk         ; 0.000        ; 0.000      ; 7.472      ;
+; 7.256 ; sm:inst5|arit         ; inst3[0]              ; clk          ; clk         ; 0.000        ; 0.000      ; 7.477      ;
+; 7.290 ; registrador:R1|FFs[0] ; inst3[0]              ; clk          ; clk         ; 0.000        ; 0.000      ; 7.511      ;
+; 7.300 ; rom:inst4|addr_ffs[4] ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 7.521      ;
+; 7.310 ; rom:inst4|addr_ffs[2] ; sm:inst5|arit         ; clk          ; clk         ; 0.000        ; 0.000      ; 7.531      ;
+; 7.358 ; registrador:PC|FFs[4] ; rom:inst4|addr_ffs[4] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.579      ;
+; 7.384 ; sm:inst5|reset_       ; rom:inst4|addr_ffs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.605      ;
+; 7.385 ; registrador:R0|FFs[2] ; rom:inst4|addr_ffs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.606      ;
+; 7.408 ; registrador:R1|FFs[4] ; rom:inst4|addr_ffs[4] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.629      ;
+; 7.411 ; rom:inst4|addr_ffs[2] ; registrador:PC|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.632      ;
+; 7.423 ; registrador:R1|FFs[3] ; rom:inst4|addr_ffs[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.644      ;
+; 7.428 ; sm:inst5|mov          ; registrador:R0|FFs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.649      ;
+; 7.442 ; rom:inst4|addr_ffs[6] ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 7.663      ;
+; 7.461 ; sm:inst5|reset_       ; rom:inst4|addr_ffs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.682      ;
+; 7.473 ; registrador:R1|FFs[2] ; registrador:R1|FFs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.694      ;
+; 7.479 ; registrador:R0|FFs[5] ; registrador:R1|FFs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.700      ;
+; 7.482 ; rom:inst4|addr_ffs[2] ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 7.703      ;
+; 7.532 ; sm:inst5|arit         ; inst3[7]              ; clk          ; clk         ; 0.000        ; 0.000      ; 7.753      ;
+; 7.584 ; sm:inst5|fetch        ; registrador:PC|FFs[7] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.805      ;
+; 7.584 ; sm:inst5|fetch        ; registrador:PC|FFs[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.805      ;
+; 7.584 ; sm:inst5|fetch        ; registrador:PC|FFs[6] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.805      ;
+; 7.606 ; sm:inst5|fetch        ; registrador:PC|FFs[4] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.827      ;
+; 7.606 ; sm:inst5|fetch        ; registrador:PC|FFs[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.827      ;
+; 7.606 ; sm:inst5|fetch        ; registrador:PC|FFs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.827      ;
+; 7.606 ; sm:inst5|fetch        ; registrador:PC|FFs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.827      ;
+; 7.612 ; registrador:R0|FFs[7] ; rom:inst4|addr_ffs[7] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.833      ;
+; 7.627 ; rom:inst4|addr_ffs[5] ; sm:inst5|mov          ; clk          ; clk         ; 0.000        ; 0.000      ; 7.848      ;
+; 7.641 ; sm:inst5|arit         ; rom:inst4|addr_ffs[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.862      ;
+; 7.659 ; sm:inst5|fetch        ; registrador:R0|FFs[4] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.880      ;
+; 7.674 ; sm:inst5|fetch        ; registrador:R0|FFs[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.895      ;
+; 7.674 ; sm:inst5|fetch        ; registrador:R0|FFs[5] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.895      ;
+; 7.674 ; sm:inst5|fetch        ; registrador:R0|FFs[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.895      ;
+; 7.678 ; sm:inst5|fetch        ; registrador:R0|FFs[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.899      ;
+; 7.679 ; sm:inst5|jmp          ; registrador:PC|FFs[7] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.900      ;
+; 7.679 ; sm:inst5|jmp          ; registrador:PC|FFs[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.900      ;
+; 7.679 ; sm:inst5|jmp          ; registrador:PC|FFs[6] ; clk          ; clk         ; 0.000        ; 0.000      ; 7.900      ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 206340   ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 206340   ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 9     ; 9    ;
+; Unconstrained Input Port Paths  ; 187   ; 187  ;
+; Unconstrained Output Ports      ; 35    ; 35   ;
+; Unconstrained Output Port Paths ; 39    ; 39   ;
++---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; clk    ; clk   ; Base ; Constrained ;
++--------+-------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; entrada[0] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[1] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[2] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[3] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[4] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[5] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[6] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[7] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; reg_PC[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[4]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[5]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[6]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[7]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; entrada[0] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[1] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[2] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[3] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[4] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[5] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[6] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; entrada[7] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; reg_PC[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_PC[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R0[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_R1[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[4]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[5]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[6]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; saida[7]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed Apr 27 22:33:35 2022
+Info: Command: quartus_sta processador -c processador
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'processador.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -23.241
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -23.241            -911.541 clk 
+Info (332146): Worst-case hold slack is 1.384
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.384               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -2.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.289              -2.289 clk 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4655 megabytes
+    Info: Processing ended: Wed Apr 27 22:33:37 2022
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+

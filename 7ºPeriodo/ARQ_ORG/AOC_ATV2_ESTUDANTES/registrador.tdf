@@ -1,0 +1,26 @@
+Subdesign registrador
+(
+	In[7 ..0],EA,EB,clk,ena_clk : INPUT;
+	OutA[7 ..0],OutB[7 ..0] : BIDIR;
+	s[7..0]: OUTPUT;
+)
+VARIABLE
+	FFs[7 ..0] : DFFE;
+	BuffersA[7 ..0],BuffersB[7 ..0] : TRI;
+	TriNodeA[7 ..0],TriNodeB[7 ..0] : TRI_STATE_NODE;
+BEGIN
+	FFs[].clk = clk;
+	FFs[].d = In[];
+	FFs[].ena = ena_clk;
+	S[] = FFs[].q;
+
+	BuffersA[].in = FFs[].q;
+	BuffersB[].in = FFs[].q;
+
+	TriNodeA[]=BuffersA[].out;
+	OutA[] = TriNodeA[];
+	BuffersA[].oe = EA;
+	TriNodeB[]=BuffersB[].out;
+	OutB[] = TriNodeB[];
+	BuffersB[].oe = EB;
+END;

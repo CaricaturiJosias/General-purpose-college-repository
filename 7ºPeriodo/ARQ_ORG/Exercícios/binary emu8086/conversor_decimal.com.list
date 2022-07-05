@@ -1,0 +1,349 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+conversor_decimal.com -- emu8086 assembler version: 4.08  
+ 
+[ 28/05/2022  --  17:35:00 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       ; ------------------------------- ;
+[   2]        :                                       ;|            ALUNOS             |;
+[   3]        :                                       ; ------------------------------- ;
+[   4]        :                                       ;|                               |;
+[   5]        :                                       ;| - Gabriel Vitor Cezario       |;
+[   6]        :                                       ;| - Ricardo Godoi Kurashiki     |;
+[   7]        :                                       ;|                               |;
+[   8]        :                                       ; ------------------------------- ;
+[   9]        :                                       
+[  10]        :                                       org 100h
+[  11]        :                                       
+[  12]    0100: EB 00                                 jmp start
+[  13]        :                                       
+[  14]        :                                       ; ---------- MACROS ------------- ;
+[  15]        :                                       
+[  16]        :                                       macro jmpline
+[  17]        :                                       PUSH AX
+[  18]        :                                       PUSH DX
+[  19]        :                                       
+[  20]        :                                       mov AH, 2
+[  21]        :                                       
+[  22]        :                                       mov DL, 10
+[  23]        :                                       int 21h
+[  24]        :                                       
+[  25]        :                                       mov DL, 13
+[  26]        :                                       int 21h
+[  27]        :                                       
+[  28]        :                                       pop DX
+[  29]        :                                       pop AX
+[  30]        :                                       endm
+[  31]        :                                       
+[  32]        :                                       macro prints s1
+[  33]        :                                       PUSH AX
+[  34]        :                                       PUSH DX
+[  35]        :                                       
+[  36]        :                                       mov AH, 9
+[  37]        :                                       mov DX, offset s1
+[  38]        :                                       int 21h
+[  39]        :                                       
+[  40]        :                                       POP DX
+[  41]        :                                       POP AX
+[  42]        :                                       endm
+[  43]        :                                       
+[  44]        :                                       macro input var
+[  45]        :                                       PUSH AX
+[  46]        :                                       PUSH DX
+[  47]        :                                       
+[  48]        :                                       mov AH, 0Ah
+[  49]        :                                       mov DX, offset var
+[  50]        :                                       int 21h
+[  51]        :                                       
+[  52]        :                                       POP DX
+[  53]        :                                       POP AX
+[  54]        :                                       endm
+[  55]        :                                       ; ---------- PROGRAMA PRINCIPAL ------------- ;
+[  56]        :                                       
+[  57]    0102:                                       start:
+[  58]    0102: E8 3F 00                              call pega_base
+[  59]        :                                       
+[  60]    0105: 50 52 B4 02 B2 0A CD 21 B2 0D CD 21   jmpline
+                5A 58                               
+[  61]    0113: 50 52 B4 02 B2 0A CD 21 B2 0D CD 21   jmpline
+                5A 58                               
+[  62]        :                                       
+[  63]    0121: E8 C3 00                              call pega_valor
+[  64]        :                                       
+[  65]    0124: 50 52 B4 02 B2 0A CD 21 B2 0D CD 21   jmpline
+                5A 58                               
+[  66]    0132: 50 52 B4 02 B2 0A CD 21 B2 0D CD 21   jmpline
+                5A 58                               
+[  67]        :                                       
+[  68]    0140: E8 89 01                              call converte_valor
+[  69]        :                                       
+[  70]    0143: C3                                    ret
+[  71]        :                                       
+[  72]        :                                       
+[  73]        :                                       ; ---------- BASE ------------- ;
+[  74]        :                                       
+[  75]    0144:                                       pega_base:
+[  76]    0144: 50 52 B4 09 BA F7 02 CD 21 5A 58      prints pergunta_base
+[  77]    014F: 50 52 B4 0A BA 8B 03 CD 21 5A 58      input base
+[  78]    015A: E8 01 00                              call confere_base
+[  79]        :                                       
+[  80]    015D: C3                                    ret
+[  81]        :                                       
+[  82]    015E:                                       confere_base:
+[  83]    015E: B9 01 00                              mov CX, 0001h
+[  84]        :                                       
+[  85]    0161: C6 06 10 00 00                        mov [10h], 0     ; Memoria responsavel por armazenar valor da base
+[  86]    0166: E8 08 00                              call conv_base
+[  87]    0169: E2 D9                                 loop pega_base
+[  88]        :                                       
+[  89]    016B: E8 3C 00                              call verifica_base
+[  90]    016E: E2 D4                                 loop pega_base
+[  91]        :                                       
+[  92]    0170: C3                                    ret
+[  93]        :                                       
+[  94]        :                                       ; ---------- VALIDACOES BASE ------------- ;
+[  95]        :                                       
+[  96]    0171:                                       conv_base:
+[  97]    0171: 50                                    PUSH AX
+[  98]        :                                       
+[  99]    0172: BE 8B 03                              mov SI, base
+[ 100]    0175: 8B 44 02                              mov AX, [SI+2]
+[ 101]    0178: 80 FC 0D                              cmp AH, 0Dh
+[ 102]    017B: 74 1B                                 je conv_base_um         ; Caso o usuario tenha entrado um valor (ex: 2)
+[ 103]    017D: 3C 30                                 cmp AL, 30h
+[ 104]    017F: 74 15                                 je conv_dois_para_um    ; Caso o usuario tenha entrado dois valores (ex: 02)
+[ 105]    0181: 3C 31                                 cmp AL, 31h
+[ 106]    0183: 77 1D                                 ja conv_base_error
+[ 107]    0185:                                       conv_base_dois:
+[ 108]    0185: 80 EC 30                              sub AH, 30h
+[ 109]    0188: 88 26 10 00                           mov [10h], AH
+[ 110]    018C: 80 06 10 00 0A                        add [10h], 10
+[ 111]        :                                       
+[ 112]    0191: 58                                    POP AX
+[ 113]    0192: B9 01 00                              mov CX, 0001h
+[ 114]    0195: C3                                    ret
+[ 115]    0196:                                       conv_dois_para_um:
+[ 116]    0196: 8A C4                                 mov AL, AH
+[ 117]    0198:                                       conv_base_um:
+[ 118]    0198: 2C 30                                 sub AL, 30h
+[ 119]    019A: A2 10 00                              mov [10h], AL
+[ 120]        :                                       
+[ 121]    019D: 58                                    POP AX
+[ 122]    019E: B9 01 00                              mov CX, 0001h
+[ 123]    01A1: C3                                    ret
+[ 124]    01A2:                                       conv_base_error:
+[ 125]    01A2: 58                                    POP AX
+[ 126]    01A3: C6 06 10 00 00                        mov [10h], 0000h
+[ 127]    01A8: EB 12                                 jmp print_base_invalida
+[ 128]        :                                       
+[ 129]    01AA:                                       verifica_base:
+[ 130]    01AA: 8B 1E 10 00                           mov BX, [10h]
+[ 131]        :                                       
+[ 132]    01AE: 80 FB 02                              cmp BL, 02h
+[ 133]    01B1: 72 09                                 jb print_base_invalida
+[ 134]    01B3: 80 FB 10                              cmp BL, 10h
+[ 135]    01B6: 77 04                                 ja print_base_invalida
+[ 136]        :                                       
+[ 137]    01B8: B9 01 00                              mov CX, 0001h
+[ 138]    01BB: C3                                    ret
+[ 139]        :                                       
+[ 140]    01BC:                                       print_base_invalida:
+[ 141]    01BC: 50 52 B4 02 B2 0A CD 21 B2 0D CD 21   jmpline
+                5A 58                               
+[ 142]    01CA: 50 52 B4 09 BA 46 03 CD 21 5A 58      prints base_invalida
+[ 143]    01D5: 50 52 B4 02 B2 0A CD 21 B2 0D CD 21   jmpline
+                5A 58                               
+[ 144]    01E3: B9 02 00                              mov CX, 0002h
+[ 145]    01E6: C3                                    ret
+[ 146]        :                                       
+[ 147]        :                                       ; ---------- VALOR ------------- ;
+[ 148]        :                                       
+[ 149]    01E7:                                       pega_valor:
+[ 150]    01E7: 50 52 B4 09 BA 19 03 CD 21 5A 58      prints pergunta_valor
+[ 151]    01F2: 50 52 B4 0A BA 85 03 CD 21 5A 58      input valor
+[ 152]    01FD: E8 01 00                              call confere_valor
+[ 153]        :                                       
+[ 154]    0200: C3                                    ret
+[ 155]        :                                       
+[ 156]    0201:                                       confere_valor:
+[ 157]    0201: B9 01 00                              mov CX, 0001h
+[ 158]        :                                       
+[ 159]    0204: C6 06 20 00 00                        mov [20h], 0     ; Memoria responsavel por armazenar o valor inserido
+[ 160]    0209: C6 06 21 00 00                        mov [21h], 0
+[ 161]    020E: C6 06 30 00 00                        mov [30h], 0     ; Memoria responsavel por armazenar o tamanho da String do numero
+[ 162]        :                                       
+[ 163]    0213: E8 0B 00                              call tamanho_valor
+[ 164]        :                                       
+[ 165]    0216: E8 22 00                              call valida_valor
+[ 166]    0219: E2 CC                                 loop pega_valor
+[ 167]        :                                       
+[ 168]    021B: E8 3B 00                              call conv_valor
+[ 169]    021E: E2 C7                                 loop pega_valor
+[ 170]        :                                       
+[ 171]        :                                       
+[ 172]    0220: C3                                    ret
+[ 173]        :                                       
+[ 174]        :                                       ; ---------- VALIDACOES VALOR ------------- ;
+[ 175]        :                                       
+[ 176]    0221:                                       tamanho_valor:
+[ 177]        :                                       
+[ 178]    0221: 53                                    PUSH BX
+[ 179]        :                                       
+[ 180]    0222: BE 85 03                              mov SI, valor
+[ 181]    0225: BB 00 00                              mov BX, 0
+[ 182]    0228:                                       tamanho_valor_loop:
+[ 183]    0228: 8A 7C 02                              mov BH, [SI+2]
+[ 184]    022B: 80 FF 0D                              cmp BH, 0Dh             ; Indica o fim da String
+[ 185]    022E: 74 05                                 je tamanho_valor_fim
+[ 186]    0230: 46                                    inc SI
+[ 187]    0231: FE C3                                 inc BL
+[ 188]    0233: EB F3                                 jmp tamanho_valor_loop
+[ 189]    0235:                                       tamanho_valor_fim:
+[ 190]    0235: 88 1E 30 00                           mov [30h], BL
+[ 191]        :                                       
+[ 192]    0239: 5B                                    POP BX
+[ 193]    023A: C3                                    ret
+[ 194]        :                                       
+[ 195]    023B:                                       valida_valor:
+[ 196]    023B: BE 85 03                              mov SI, valor
+[ 197]    023E: BB 00 00                              mov BX, 0
+[ 198]    0241: 8B 0E 30 00                           mov CX, [30h]
+[ 199]    0245:                                       valida_valor_loop:
+[ 200]    0245: 8A 7C 02                              mov BH, [SI+2]
+[ 201]    0248: 80 FF 39                              cmp BH, 39h
+[ 202]    024B: 77 54                                 ja print_valor_invalido
+[ 203]    024D: 80 FF 30                              cmp BH, 30h
+[ 204]    0250: 72 4F                                 jb print_valor_invalido
+[ 205]    0252: 46                                    inc SI
+[ 206]    0253: E2 F0                                 loop valida_valor_loop
+[ 207]    0255:                                       valida_valor_fim:
+[ 208]    0255: B9 01 00                              mov CX, 0001h
+[ 209]    0258: C3                                    ret
+[ 210]        :                                       
+[ 211]        :                                       ; 65535
+[ 212]        :                                       ; ((((6)*10 + 5)*10 + 5)*10 + 3)*10 + 5
+[ 213]        :                                       ;     CX=5    CX=4    CX=3    CX=2   CX=1
+[ 214]        :                                       
+[ 215]        :                                       ; se CX == 1, soma apenas com o valor ja salvo
+[ 216]        :                                       ; senao, multiplica por 10 e soma com o valor ja salvo
+[ 217]        :                                       
+[ 218]    0259:                                       conv_valor:
+[ 219]    0259: 50                                    PUSH AX
+[ 220]    025A: 53                                    PUSH BX
+[ 221]    025B: 51                                    PUSH CX
+[ 222]        :                                       
+[ 223]    025C: BE 85 03                              mov SI, valor
+[ 224]    025F: C6 06 20 00 00                        mov [20h], 0000h
+[ 225]    0264: 8B 0E 30 00                           mov CX, [30h]
+[ 226]    0268:                                       conv_valor_loop:
+[ 227]    0268: BB 0A 00                              mov BX, 10
+[ 228]    026B: B8 00 00                              mov AX, 0
+[ 229]    026E: 8A 44 02                              mov AL, [SI+2]
+[ 230]    0271: 2C 30                                 sub AL, 30h
+[ 231]    0273: 83 F9 01                              cmp CX, 1
+[ 232]    0276: 77 02                                 ja conv_valor_mul
+[ 233]    0278: 74 10                                 je conv_valor_fim
+[ 234]    027A:                                       conv_valor_mul:
+[ 235]    027A: 03 06 20 00                           add AX, [20h]
+[ 236]    027E: 72 17                                 jc conv_valor_error
+[ 237]        :                                       
+[ 238]    0280: F7 E3                                 mul BX
+[ 239]    0282: 72 13                                 jc conv_valor_error
+[ 240]        :                                       
+[ 241]    0284: A3 20 00                              mov [20h], AX
+[ 242]        :                                       
+[ 243]    0287: 46                                    inc SI
+[ 244]    0288: E2 DE                                 loop conv_valor_loop
+[ 245]    028A:                                       conv_valor_fim:
+[ 246]    028A: 01 06 20 00                           add [20h], AX
+[ 247]    028E: 72 07                                 jc conv_valor_error
+[ 248]        :                                       
+[ 249]    0290: 59                                    POP CX
+[ 250]    0291: 5B                                    POP BX
+[ 251]    0292: 58                                    POP AX
+[ 252]        :                                       
+[ 253]    0293: B9 01 00                              mov CX, 0001h
+[ 254]        :                                       
+[ 255]    0296: C3                                    ret
+[ 256]    0297:                                       conv_valor_error:
+[ 257]    0297: 59                                    POP CX
+[ 258]    0298: 5B                                    POP BX
+[ 259]    0299: 58                                    POP AX
+[ 260]        :                                       
+[ 261]    029A: C6 06 20 00 00                        mov [20h], 0000h
+[ 262]        :                                       
+[ 263]    029F: EB 00                                 jmp print_valor_invalido
+[ 264]        :                                       
+[ 265]    02A1:                                       print_valor_invalido:
+[ 266]    02A1: 50 52 B4 02 B2 0A CD 21 B2 0D CD 21   jmpline
+                5A 58                               
+[ 267]    02AF: 50 52 B4 09 BA 65 03 CD 21 5A 58      prints valor_invalido
+[ 268]    02BA: 50 52 B4 02 B2 0A CD 21 B2 0D CD 21   jmpline
+                5A 58                               
+[ 269]    02C8: B9 02 00                              mov CX, 0002h
+[ 270]    02CB: C3                                    ret
+[ 271]        :                                       
+[ 272]        :                                       ; ---------- CONVERSAO ------------- ;
+[ 273]        :                                       
+[ 274]        :                                       
+[ 275]    02CC:                                       converte_valor:
+[ 276]    02CC: C6 06 40 00 00                        mov [40h], 0000h
+[ 277]    02D1: 8B 36 40 00                           mov SI, [40h]       ; Memoria do valor convertido
+[ 278]        :                                       
+[ 279]    02D5: 8B 1E 10 00                           mov BX, [10h]       ; Base escolhida
+[ 280]    02D9: A1 20 00                              mov AX, [20h]       ; Valor escolhido
+[ 281]        :                                       
+[ 282]    02DC:                                       converte_valor_loop:
+[ 283]    02DC: BA 00 00                              mov DX, 0
+[ 284]    02DF: F7 F3                                 div BX
+[ 285]    02E1: 80 FA 09                              cmp DL, 9
+[ 286]    02E4: 77 07                                 ja resto_letra
+[ 287]    02E6: 76 0A                                 jbe  resto_numero
+[ 288]    02E8:                                       converte_valor_loop_continuacao:
+[ 289]    02E8: 88 14                                 mov [SI], DL
+[ 290]    02EA: 46                                    inc SI
+[ 291]    02EB: EB EF                                 jmp converte_valor_loop
+[ 292]        :                                       
+[ 293]    02ED:                                       resto_letra:
+[ 294]    02ED: 80 C2 37                              add DL, 37h
+[ 295]    02F0: EB F6                                 jmp converte_valor_loop_continuacao
+[ 296]        :                                       
+[ 297]    02F2:                                       resto_numero:
+[ 298]    02F2: 80 C2 30                              add DL, 30h
+[ 299]    02F5: EB F1                                 jmp converte_valor_loop_continuacao
+[ 300]        :                                       
+[ 301]        :                                       ; ---------- MISC ------------- ;
+[ 302]        :                                       
+[ 303]    02F7: 49 6E 73 69 72 61 20 61 20 62 61 73   pergunta_base: db "Insira a base do valor (2 - 16): $"
+                65 20 64 6F 20 76 61 6C 6F 72 20 28 
+                32 20 2D 20 31 36 29 3A 20 24       
+[ 304]        :                                       
+[ 305]    0319: 49 6E 73 69 72 61 20 6F 20 76 61 6C   pergunta_valor: db "Insira o valor em base decimal (0 - 65535): $"
+                6F 72 20 65 6D 20 62 61 73 65 20 64 
+                65 63 69 6D 61 6C 20 28 30 20 2D 20 
+                36 35 35 33 35 29 3A 20 24          
+[ 306]        :                                       
+[ 307]    0346: 41 20 62 61 73 65 20 69 6E 73 65 72   base_invalida: db "A base inserida nao eh valida!$"
+                69 64 61 20 6E 61 6F 20 65 68 20 76 
+                61 6C 69 64 61 21 24                
+[ 308]        :                                       
+[ 309]    0365: 4F 20 76 61 6C 6F 72 20 69 6E 73 65   valor_invalido: db "O valor inserido nao eh valido!$"
+                72 69 64 6F 20 6E 61 6F 20 65 68 20 
+                76 61 6C 69 64 6F 21 24             
+[ 310]        :                                       
+[ 311]    0385: 06 00 24 24 24 24                     valor: db 6, 0, 3 dup('$'), '$'
+[ 312]        :                                       
+[ 313]    038B: 03 00 24 24 24 24                     base: db 3, 0, 3 dup('$'), '$'
+[ 314]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

@@ -1,0 +1,31 @@
+subdesign ula
+(
+	a[7..0], b[7..0]: input;
+	Operation[2..0]:	input;
+	z[7..0]: 			output;
+	zero: output;	-- NOVO
+)
+
+begin 
+	CASE Operation[] IS
+		WHEN 0 =>
+			z[] = a[] + b[];
+		WHEN 1 =>
+			z[] = a[] - b[];
+		WHEN 2 =>
+			z[] = a[] + 1;
+		WHEN 3 =>	
+			z[] = a[] - 1;
+		WHEN 4 =>
+			z[] = NOT a[];
+		WHEN 5 =>
+			z[] = a[] xor b[];
+		WHEN 6 =>
+			z[] = a[];
+		WHEN 7 =>
+			z[] = b[];
+	END CASE;
+	
+	zero = (Z[] == h"0");	-- NOVO
+
+end;

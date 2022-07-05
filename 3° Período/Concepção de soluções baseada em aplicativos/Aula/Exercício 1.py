@@ -65,4 +65,4 @@ print(tese1.get_lista_autores())
 print(tese1.get_hipotese())
 tese1.set_hipotese('Talvez siis, talvez soos')
 print(tese1.get_hipotese())
-        
+     

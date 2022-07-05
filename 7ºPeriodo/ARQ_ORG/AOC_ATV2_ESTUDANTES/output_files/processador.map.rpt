@@ -1,0 +1,388 @@
+Analysis & Synthesis report for processador
+Wed Apr 27 22:33:28 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |planta|sm:inst5|brain
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Wed Apr 27 22:33:28 2022       ;
+; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name               ; processador                                 ;
+; Top-level Entity Name       ; planta                                      ;
+; Family                      ; MAX II                                      ;
+; Total logic elements        ; 179                                         ;
+; Total pins                  ; 47                                          ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
++-----------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EPM570T144C5       ;                    ;
+; Top-level entity name                                            ; planta             ; processador        ;
+; Family name                                                      ; MAX II             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                               ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                     ; Library ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
+; planta.bdf                       ; yes             ; User Block Diagram/Schematic File  ; C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/planta.bdf        ;         ;
+; sm.tdf                           ; yes             ; User AHDL File                     ; C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf            ;         ;
+; rom.tdf                          ; yes             ; User AHDL File                     ; C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/rom.tdf           ;         ;
+; regs_def.inc                     ; yes             ; User Unspecified File              ; C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/regs_def.inc      ;         ;
+; ula_def.inc                      ; yes             ; User Unspecified File              ; C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/ula_def.inc       ;         ;
+; ula.tdf                          ; yes             ; User AHDL File                     ; C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/ula.tdf           ;         ;
+; registrador.tdf                  ; yes             ; User AHDL File                     ; C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/registrador.tdf   ;         ;
+; decodificador.tdf                ; yes             ; User AHDL File                     ; C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/decodificador.tdf ;         ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 179   ;
+;     -- Combinational with no register       ; 132   ;
+;     -- Register only                        ; 34    ;
+;     -- Combinational with a register        ; 13    ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 84    ;
+;     -- 3 input functions                    ; 29    ;
+;     -- 2 input functions                    ; 30    ;
+;     -- 1 input functions                    ; 1     ;
+;     -- 0 input functions                    ; 1     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 152   ;
+;     -- arithmetic mode                      ; 27    ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 8     ;
+;     -- asynchronous clear/load mode         ; 7     ;
+;                                             ;       ;
+; Total registers                             ; 47    ;
+; Total logic cells in carry chains           ; 31    ;
+; I/O pins                                    ; 47    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 47    ;
+; Total fan-out                               ; 655   ;
+; Average fan-out                             ; 2.90  ;
++---------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                    ;
++--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------+---------------+--------------+
+; Compilation Hierarchy Node     ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name               ; Entity Name   ; Library Name ;
++--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------+---------------+--------------+
+; |planta                        ; 179 (50)    ; 47           ; 0          ; 47   ; 0            ; 132 (42)     ; 34 (8)            ; 13 (0)           ; 31 (0)          ; 0 (0)      ; |planta                           ; planta        ; work         ;
+;    |decodificador:DecodA|      ; 3 (3)       ; 0            ; 0          ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |planta|decodificador:DecodA      ; decodificador ; work         ;
+;    |decodificador:DecodTarget| ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |planta|decodificador:DecodTarget ; decodificador ; work         ;
+;    |registrador:PC|            ; 8 (8)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 8 (8)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |planta|registrador:PC            ; registrador   ; work         ;
+;    |registrador:R0|            ; 8 (8)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 8 (8)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |planta|registrador:R0            ; registrador   ; work         ;
+;    |registrador:R1|            ; 8 (8)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 8 (8)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |planta|registrador:R1            ; registrador   ; work         ;
+;    |rom:inst4|                 ; 19 (19)     ; 8            ; 0          ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 8 (8)            ; 0 (0)           ; 0 (0)      ; |planta|rom:inst4                 ; rom           ; work         ;
+;    |sm:inst5|                  ; 24 (24)     ; 7            ; 0          ; 0    ; 0            ; 17 (17)      ; 2 (2)             ; 5 (5)            ; 0 (0)           ; 0 (0)      ; |planta|sm:inst5                  ; sm            ; work         ;
+;    |ula:inst|                  ; 54 (54)     ; 0            ; 0          ; 0    ; 0            ; 54 (54)      ; 0 (0)             ; 0 (0)            ; 31 (31)         ; 0 (0)      ; |planta|ula:inst                  ; ula           ; work         ;
++--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------+
+; State Machine - |planta|sm:inst5|brain                               ;
++--------+------+-----+--------+-----+-------+--------+-------+--------+
+; Name   ; arit ; mov ; set_R0 ; jmp ; decod ; inc_PC ; fetch ; reset_ ;
++--------+------+-----+--------+-----+-------+--------+-------+--------+
+; reset_ ; 0    ; 0   ; 0      ; 0   ; 0     ; 0      ; 0     ; 0      ;
+; fetch  ; 0    ; 0   ; 0      ; 0   ; 0     ; 0      ; 1     ; 1      ;
+; inc_PC ; 0    ; 0   ; 0      ; 0   ; 0     ; 1      ; 0     ; 1      ;
+; decod  ; 0    ; 0   ; 0      ; 0   ; 1     ; 0      ; 0     ; 1      ;
+; jmp    ; 0    ; 0   ; 0      ; 1   ; 0     ; 0      ; 0     ; 1      ;
+; set_R0 ; 0    ; 0   ; 1      ; 0   ; 0     ; 0      ; 0     ; 1      ;
+; mov    ; 0    ; 1   ; 0      ; 0   ; 0     ; 0      ; 0     ; 1      ;
+; arit   ; 1    ; 0   ; 0      ; 0   ; 0     ; 0      ; 0     ; 1      ;
++--------+------+-----+--------+-----+-------+--------+-------+--------+
+
+
++--------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                   ;
++----------------------------------------+---------------------------------------------+
+; Register name                          ; Reason for Removal                          ;
++----------------------------------------+---------------------------------------------+
+; FFZ                                    ; Stuck at GND due to stuck port clock_enable ;
+; registrador:R2|FFs[7]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R3|FFs[7]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R2|FFs[6]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R3|FFs[6]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R2|FFs[5]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R3|FFs[5]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R2|FFs[4]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R3|FFs[4]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R2|FFs[3]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R3|FFs[3]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R2|FFs[2]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R3|FFs[2]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R2|FFs[1]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R3|FFs[1]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R2|FFs[0]                  ; Stuck at GND due to stuck port data_in      ;
+; registrador:R3|FFs[0]                  ; Stuck at GND due to stuck port data_in      ;
+; sm:inst5|set_R0                        ; Lost fanout                                 ;
+; Total Number of Removed Registers = 18 ;                                             ;
++----------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 47    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 32    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 8:1                ; 7 bits    ; 35 LEs        ; 35 LEs               ; 0 LEs                  ; No         ; |planta|ula:inst|z[7]      ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |planta|busB[7]            ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |planta|busA[7]            ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |planta|busA[4]            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed Apr 27 22:33:08 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off processador -c processador
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file planta.bdf
+    Info (12023): Found entity 1: planta
+Warning (287004): Group name "SA" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 24
+Warning (287004): Group name "SB" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 25
+Warning (287004): Group name "Target" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 26
+Warning (287004): Group name "Operation" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 27
+Warning (287004): Group name "state" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 29
+Warning (287004): Group name "SA" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 31
+Warning (287004): Group name "SB" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 32
+Warning (287004): Group name "Target" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 33
+Warning (287004): Group name "Operation" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 34
+Warning (287004): Group name "state" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 36
+Warning (287004): Group name "SA" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 38
+Warning (287004): Group name "SB" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 39
+Warning (287004): Group name "Target" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 40
+Warning (287004): Group name "Operation" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 41
+Warning (287004): Group name "state" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 43
+Warning (287004): Group name "SA" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 45
+Warning (287004): Group name "SB" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 46
+Warning (287004): Group name "Target" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 47
+Warning (287004): Group name "Operation" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 48
+Warning (287004): Group name "state" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 49
+Warning (287004): Group name "SA" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 69
+Warning (287004): Group name "SB" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 70
+Warning (287004): Group name "Target" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 71
+Warning (287004): Group name "Operation" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 72
+Warning (287004): Group name "state" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 73
+Warning (287004): Group name "SA" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 76
+Warning (287004): Group name "SB" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 77
+Warning (287004): Group name "Target" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 78
+Warning (287004): Group name "Operation" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 79
+Warning (287004): Group name "state" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 80
+Warning (287004): Group name "SA" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 83
+Warning (287004): Group name "SB" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 84
+Warning (287004): Group name "Target" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 85
+Warning (287004): Group name "Operation" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 86
+Warning (287004): Group name "state" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 87
+Warning (287004): Group name "SA" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 90
+Warning (287004): Group name "SB" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 91
+Warning (287004): Group name "Target" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 92
+Warning (287004): Group name "Operation" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 93
+Warning (287004): Group name "state" is missing brackets ([ ]) File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 94
+Info (12021): Found 1 design units, including 1 entities, in source file sm.tdf
+    Info (12023): Found entity 1: sm File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rom.tdf
+    Info (12023): Found entity 1: rom File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/rom.tdf Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ula.tdf
+    Info (12023): Found entity 1: ula File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/ula.tdf Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file registrador.tdf
+    Info (12023): Found entity 1: registrador File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/registrador.tdf Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file decodificador.tdf
+    Info (12023): Found entity 1: decodificador File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/decodificador.tdf Line: 1
+Info (12127): Elaborating entity "planta" for the top level hierarchy
+Info (12128): Elaborating entity "ula" for hierarchy "ula:inst"
+Info (12128): Elaborating entity "decodificador" for hierarchy "decodificador:DecodA"
+Info (12128): Elaborating entity "sm" for hierarchy "sm:inst5"
+Warning (287013): Variable or input pin "Z_flag" is defined but never used. File: C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/sm.tdf Line: 7
+Info (12128): Elaborating entity "rom" for hierarchy "rom:inst4"
+Info (12128): Elaborating entity "registrador" for hierarchy "registrador:R0"
+Info (12128): Elaborating entity "decodificador" for hierarchy "decodificador:DecodB"
+Info (12128): Elaborating entity "registrador" for hierarchy "registrador:R2"
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13048): Converted tri-state node "busA[7]" into a selector
+    Warning (13048): Converted tri-state node "busA[6]" into a selector
+    Warning (13048): Converted tri-state node "busA[5]" into a selector
+    Warning (13048): Converted tri-state node "busA[4]" into a selector
+    Warning (13048): Converted tri-state node "busA[3]" into a selector
+    Warning (13048): Converted tri-state node "busA[2]" into a selector
+    Warning (13048): Converted tri-state node "busA[1]" into a selector
+    Warning (13048): Converted tri-state node "busA[0]" into a selector
+    Warning (13048): Converted tri-state node "busB[7]" into a selector
+    Warning (13048): Converted tri-state node "busB[6]" into a selector
+    Warning (13048): Converted tri-state node "busB[5]" into a selector
+    Warning (13048): Converted tri-state node "busB[4]" into a selector
+    Warning (13048): Converted tri-state node "busB[3]" into a selector
+    Warning (13048): Converted tri-state node "busB[2]" into a selector
+    Warning (13048): Converted tri-state node "busB[1]" into a selector
+    Warning (13048): Converted tri-state node "busB[0]" into a selector
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "Z_flag" is stuck at GND
+    Warning (13410): Pin "ena_Z_flag" is stuck at GND
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (21057): Implemented 226 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
+    Info (21059): Implemented 37 output pins
+    Info (21061): Implemented 179 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 62 warnings
+    Info: Peak virtual memory: 4687 megabytes
+    Info: Processing ended: Wed Apr 27 22:33:28 2022
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:29
+
+

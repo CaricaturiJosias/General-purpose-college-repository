@@ -1,0 +1,43 @@
+< THE SYMBOL TABLE >  conversor_decimal.com  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+START                    	00102     	-1        	LABEL     	(NOSEG)   
+PEGA_BASE                	00144     	-1        	LABEL     	(NOSEG)   
+CONFERE_BASE             	0015E     	-1        	LABEL     	(NOSEG)   
+CONV_BASE                	00171     	-1        	LABEL     	(NOSEG)   
+CONV_BASE_DOIS           	00185     	-1        	LABEL     	(NOSEG)   
+CONV_DOIS_PARA_UM        	00196     	-1        	LABEL     	(NOSEG)   
+CONV_BASE_UM             	00198     	-1        	LABEL     	(NOSEG)   
+CONV_BASE_ERROR          	001A2     	-1        	LABEL     	(NOSEG)   
+VERIFICA_BASE            	001AA     	-1        	LABEL     	(NOSEG)   
+PRINT_BASE_INVALIDA      	001BC     	-1        	LABEL     	(NOSEG)   
+PEGA_VALOR               	001E7     	-1        	LABEL     	(NOSEG)   
+CONFERE_VALOR            	00201     	-1        	LABEL     	(NOSEG)   
+TAMANHO_VALOR            	00221     	-1        	LABEL     	(NOSEG)   
+TAMANHO_VALOR_LOOP       	00228     	-1        	LABEL     	(NOSEG)   
+TAMANHO_VALOR_FIM        	00235     	-1        	LABEL     	(NOSEG)   
+VALIDA_VALOR             	0023B     	-1        	LABEL     	(NOSEG)   
+VALIDA_VALOR_LOOP        	00245     	-1        	LABEL     	(NOSEG)   
+VALIDA_VALOR_FIM         	00255     	-1        	LABEL     	(NOSEG)   
+CONV_VALOR               	00259     	-1        	LABEL     	(NOSEG)   
+CONV_VALOR_LOOP          	00268     	-1        	LABEL     	(NOSEG)   
+CONV_VALOR_MUL           	0027A     	-1        	LABEL     	(NOSEG)   
+CONV_VALOR_FIM           	0028A     	-1        	LABEL     	(NOSEG)   
+CONV_VALOR_ERROR         	00297     	-1        	LABEL     	(NOSEG)   
+PRINT_VALOR_INVALIDO     	002A1     	-1        	LABEL     	(NOSEG)   
+CONVERTE_VALOR           	002CC     	-1        	LABEL     	(NOSEG)   
+CONVERTE_VALOR_LOOP      	002DC     	-1        	LABEL     	(NOSEG)   
+CONVERTE_VALOR_LOOP_CONTINUACAO	002E8     	-1        	LABEL     	(NOSEG)   
+RESTO_LETRA              	002ED     	-1        	LABEL     	(NOSEG)   
+RESTO_NUMERO             	002F2     	-1        	LABEL     	(NOSEG)   
+PERGUNTA_BASE            	002F7     	-1        	LABEL     	(NOSEG)   
+PERGUNTA_VALOR           	00319     	-1        	LABEL     	(NOSEG)   
+BASE_INVALIDA            	00346     	-1        	LABEL     	(NOSEG)   
+VALOR_INVALIDO           	00365     	-1        	LABEL     	(NOSEG)   
+VALOR                    	00385     	-1        	LABEL     	(NOSEG)   
+BASE                     	0038B     	-1        	LABEL     	(NOSEG)   
+===================================================================================================
+[ 28/05/2022  --  17:35:00 ] 
+< END >
+ 

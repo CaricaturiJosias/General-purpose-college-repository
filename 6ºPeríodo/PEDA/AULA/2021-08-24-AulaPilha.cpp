@@ -7,23 +7,26 @@ using namespace std;
 
 constexpr int MAXPILHA = 10;
 
-using TipoDados = int; //em C: typedef int TipoDado
+using TipoDados = int; //em C: typedef int TipoDados
 
 //------Pilha.h
 class Pilha{
 private:
     TipoDados dados[MAXPILHA];
-    array<int,MAXPILHA> dado;
+    array<TipoDados,MAXPILHA> dado;
     int topo_;
 
 public:
     Pilha(); //construtor
+    ~Pilha(); //destructor
     void push(TipoDados elem);
     void pop();
     TipoDados topo();
     bool vazia();
     bool cheia();
 };
+
+//----- Main.cpp
 
 int main()
 {
@@ -42,6 +45,7 @@ Pilha :: Pilha()
 {
     topo_ = -1;
 }; //construtor
+
 void Pilha::push(TipoDados elem)
 {
     if (!cheia()){

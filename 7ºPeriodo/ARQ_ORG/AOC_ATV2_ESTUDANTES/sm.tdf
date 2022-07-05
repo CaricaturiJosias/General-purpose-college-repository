@@ -1,0 +1,97 @@
+include "regs_def.inc";
+include "ula_def.inc";
+
+subdesign sm(
+	clk, reset: input;
+	instruction[11..0]: input;
+	Z_flag: input;	-- NOVO
+	SA[2..0], SB[2..0], Target[2..0], Operation[2..0]: output;
+	ena_Z_flag: output;	-- NOVO
+	state[2..0]:output;
+)
+variable
+	brain	: MACHINE WITH STATES (reset_, fetch, inc_PC, decod, jmp, set_R0, mov, arit);
+begin
+	defaults	-- NOVO
+		ena_Z_flag = GND;
+	end defaults;
+
+	brain.clk = clk;
+	brain.reset = reset;
+	
+	case brain is
+		when reset_ =>
+			SA 			= PC;
+			SB 			= PC;
+			Target 		= PC;
+			Operation	= _SUB;
+			brain 		= fetch;
+			state = 0;
+		when fetch =>
+			SA 			= PC; 
+			SB 			= ROM;
+			Target 		= ROM;
+			Operation	= _BYPASS_A;
+			brain 		= inc_PC;
+			state = 1;
+		when inc_PC =>
+			SA 			= PC;
+			SB 			= PC;
+			Target 		= PC;
+			Operation	= _INC;	
+			brain			= decod;
+			state = 2;
+		when decod =>
+			SA 			= PC;
+			SB 			= PC;
+			Target 		= PC;
+			Operation	= _BYPASS_A;
+			state = 3;
+			
+			case instruction[11..8] is
+				when h"B" =>
+					case ena_Z_flag is
+						when 1 =>
+							brain = jmp;
+						when 0 =>
+							brain = fetch;
+					end case;
+				when h"A" =>
+					brain = jmp;
+				when h"9" => 
+					brain = set_R0;
+				when h"8" =>
+					brain = mov;
+				when others =>
+					brain = arit;
+				end case;
+		when jmp =>
+			SA 			= instruction[2..0];
+			SB 			= PC;
+			Target 		= PC;
+			Operation	= _BYPASS_A;
+			state = 4;
+			brain = fetch;
+		when set_R0 =>
+			SA 			= instruction[2..0];
+			SB 			= R0;
+			Target 		= R0;
+			Operation	= _BYPASS_A;
+			state = 4;	
+			brain = fetch;
+		when mov =>
+			SA 			= instruction[2..0];
+			SB 			= R0;
+			Target 		= instruction[6..4];
+			Operation	= _BYPASS_A;
+			state = 4;
+			brain = fetch;
+		when arit =>
+			SA 			= instruction[6..4]; 
+			SB 			= instruction[2..0];
+			Target 		= instruction[6..4];
+			Operation	= instruction[10..8];
+			state = 4;
+			brain = fetch;
+	end case;
+end;

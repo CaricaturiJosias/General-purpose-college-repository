@@ -1,0 +1,33 @@
+include "regs_def.inc";
+include "ula_def.inc";
+
+subdesign sm(
+	clk, reset: input;
+	instruction[11..0]: input;
+	Z_flag: input;	-- NOVO
+	SA[2..0], SB[2..0], Target[2..0], Operation[2..0]: output;
+	ena_Z_flag: output;	-- NOVO
+	state[2..0]:output;
+)
+variable
+	brain	: MACHINE WITH STATES (reset_, fetch, inc_PC, decod, jmp, set_R0, mov, ...);
+begin
+	defaults	-- NOVO
+		ena_Z_flag = GND;
+	end defaults;
+
+	brain.clk = clk;
+	brain.reset = reset;
+	
+	case brain is
+		when reset_ =>
+		when fetch =>
+		when inc_PC =>
+		when decod =>
+		when jmp =>
+		when set_R0 =>
+		when mov =>
+		when ... =>
+		
+	end case;
+end;
