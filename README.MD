@@ -1,6 +1,6 @@
 # **Purpose of this repository**
 
-## This is a repository to update practices done in class, keeping track of 
+## This is a repository to update practices done in class, keeping track of what was done so far
 programing languages and softwares used throught the 5 years of class of the
 computer engineering bachelor's degree course in pucpr
 (Pontifical Catholic University of Paraná)
