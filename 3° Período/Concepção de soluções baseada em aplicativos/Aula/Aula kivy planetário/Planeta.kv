@@ -1,0 +1,77 @@
+#utils é uma biblioteca do Kivy que possui a função get_color_from_hex (aceita cores em hexa)
+#import utils kivy.utils
+
+<Principal>:
+    orientation:'vertical'
+    
+    #imagem do planeta
+    BoxLayout:
+        
+        #elemento do widget que permite desenhar, preenche-lo
+        canvas:
+            Rectangle: 
+                size: (300,300)
+                pos:  (0, 100)
+                source: root.imagem_planeta
+    #nome do planeta
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+            
+        Label:
+            id: mensagem
+            text: 'Terra'    
+            font_size: 40
+            markup : True
+            
+    #mostrar os controles do app
+    FloatLayout:
+        size_hint_y: None
+        height: 50
+        
+        #spinner para escolher planeta
+        Spinner:
+            
+            values: {'Terra', 'Lua', 'Saturno', 'Jupiter', 'Wap'}
+            
+            text:'Terra'
+            
+            id: lista_planeta
+            
+            on_text: root.muda_planeta(lista_planeta.text)
+            
+            size_hint: (None, 0.5)
+            
+            width: 80
+            
+            #verticalmente no meio
+            #2% da margem esquerda
+           
+            pos_hint: {'center_y': 0.5, 'x': 0.02}
+                       
+        #checkbox para ligar/desligar som
+        CheckBox:
+            id: ckSom
+            active: True
+            size_hint: (None, None)
+            
+            width:  40
+            height: 40
+            
+            pos_hint: {'center_y': 0.5, 'x': 0.4}
+            
+            on_active: root.controle_som(ckSom.active)
+        Label:  
+            text: 'som'
+            size_hint: (None, 0.5)
+            width: 40
+            pos_hint: {'center_y': 0.5, 'x': 0.5}
+            
+        #botão de fechar o app
+        Button:
+            text:'SAIR'
+            size_hint: (None, 0.5)
+            width: 60
+            pos_hint: {'center_y': 0.5, 'right': 0.98}
+            
+            on_release: root.botao_sair()

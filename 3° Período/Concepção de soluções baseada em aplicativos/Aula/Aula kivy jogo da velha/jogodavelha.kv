@@ -1,0 +1,117 @@
+#cada tela deve ter uma classe no kv
+<Jogadores>
+   
+    on_pre_enter: root.verifica_jogadores()
+   
+    FloatLayout:
+        orientation: 'vertical'
+        
+        Label:
+            text: 'Bem vindo'
+            size_hint: (0.1,0.1)
+            pos_hint: {'center_x':0.5,'y':0.9}
+        
+        Label: 
+            text: 'Jogador 1'
+            
+            size_hint_x: (0.25)
+            pos_hint: {'x':0.2, 'y': 0.2}
+        
+        TextInput: 
+            id: jogador1
+            size_hint: (0.4,0.1)
+            pos_hint: {'center_x':0.7,'y':0.65}
+        
+        Label:
+            text: 'Jogador 2'
+            
+            size_hint: (0.25,0.4)
+            pos_hint: {'x': 0.2, 'y': 0.3} 
+        
+        TextInput:
+            id: jogador2
+            
+            size_hint: (0.4,0.1)
+            pos_hint: {'center_x':0.7,'y':0.45}   
+            
+        Button:
+            text: 'Jogar'
+            on_release: root.jogar()
+            size_hint: (0.8,0.25)
+            
+            pos_hint: {'x':0.1,'y':0.1}
+<Jogo>
+    on_pre_enter: root.inicia_jogo()
+    
+            
+    BoxLayout:
+        orientation: 'vertical'
+        
+        #exibir jogador atual (na vez)
+        Label:
+            text:
+            font_size: 30
+            id: jogadoratual
+            
+        #mensagem indicando a vez
+        Label:
+            text: 'sua vez'
+        
+        #tabuleiro 3x3
+        GridLayout:
+            size_hint_y: None
+            height: 300
+            
+            cols: 3
+            rows: 3
+                
+            padding: 6 #espaço entre o grid e o boxlayout
+            spacing: 3 #espaço entre os widgets do grid
+            
+            Button: 
+                id: bt00
+                on_release: root.jogou_posicao(0,0)
+            Button: 
+                id: bt01
+                on_release: root.jogou_posicao(0,1)
+            Button:
+                id: bt02
+                on_release: root.jogou_posicao(0,2)
+            Button:
+                id: bt10
+                on_release: root.jogou_posicao(1,0)
+            Button:
+                id: bt11
+                on_release: root.jogou_posicao(1,1)
+            Button:
+                id: bt12
+                on_release: root.jogou_posicao(1,2)
+            Button:
+                id: bt20
+                on_release: root.jogou_posicao(2,0)
+            Button:
+                id: bt21
+                on_release: root.jogou_posicao(2,1)
+            Button:
+                id: bt22
+                on_release: root.jogou_posicao(2,2)
+                 
+    
+<Final>   
+    on_pre_enter: root.verifica_resultado()
+    
+    BoxLayout:
+        orientation: 'vertical'
+        
+        #mostrar quem venceu
+        Label:    
+            text: ''
+            font_size: 30 
+            id: mensagem
+        Button:
+            text: 'Novo jogo'
+            on_release: root.novo_jogo()
+        
+        Button: 
+            text: 'Sair'
+            on_release: root.sair()
