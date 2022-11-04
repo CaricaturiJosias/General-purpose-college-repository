@@ -1,5 +1,5 @@
 Flow report for processador
-Wed Apr 27 22:34:26 2022
+Sun Sep 25 00:31:56 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -38,21 +38,21 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+---------------------------------------------------------------------+
-; Flow Summary                                                        ;
-+-----------------------+---------------------------------------------+
-; Flow Status           ; Successful - Wed Apr 27 22:34:26 2022       ;
-; Quartus Prime Version ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
-; Revision Name         ; processador                                 ;
-; Top-level Entity Name ; planta                                      ;
-; Family                ; MAX II                                      ;
-; Device                ; EPM570T144C5                                ;
-; Timing Models         ; Final                                       ;
-; Total logic elements  ; 153 / 570 ( 27 % )                          ;
-; Total pins            ; 47 / 116 ( 41 % )                           ;
-; Total virtual pins    ; 0                                           ;
-; UFM blocks            ; 0 / 1 ( 0 % )                               ;
-+-----------------------+---------------------------------------------+
++------------------------------------------------------------------------------+
+; Flow Summary                                                                 ;
++-----------------------+------------------------------------------------------+
+; Flow Status           ; EDA Netlist Writer Failed - Sun Sep 25 00:31:56 2022 ;
+; Quartus Prime Version ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition          ;
+; Revision Name         ; processador                                          ;
+; Top-level Entity Name ; planta                                               ;
+; Family                ; MAX II                                               ;
+; Device                ; EPM570T144C5                                         ;
+; Timing Models         ; Final                                                ;
+; Total logic elements  ; 153 / 570 ( 27 % )                                   ;
+; Total pins            ; 47 / 116 ( 41 % )                                    ;
+; Total virtual pins    ; 0                                                    ;
+; UFM blocks            ; 0 / 1 ( 0 % )                                        ;
++-----------------------+------------------------------------------------------+
 
 
 +-----------------------------------------+
@@ -102,7 +102,8 @@ https://fpgasoftware.intel.com/eula.
 ; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4611 MB             ; 00:00:01                           ;
 ; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4599 MB             ; 00:00:01                           ;
 ; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4611 MB             ; 00:00:01                           ;
-; Total                ; 00:00:29     ; --                      ; --                  ; 00:00:39                           ;
+; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4606 MB             ; 00:00:01                           ;
+; Total                ; 00:00:32     ; --                      ; --                  ; 00:00:40                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -120,6 +121,7 @@ https://fpgasoftware.intel.com/eula.
 ; EDA Netlist Writer   ; LECP0202         ; Windows 10 ; 10.0       ; x86_64         ;
 ; EDA Netlist Writer   ; LECP0202         ; Windows 10 ; 10.0       ; x86_64         ;
 ; EDA Netlist Writer   ; LECP0202         ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; DESKTOP-JM1HVC0  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -135,6 +137,7 @@ quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_setting
 quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/simulation/qsim/ processador -c processador
 quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off processador -c processador --vector_source=C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/planta_sim.vwf --testbench_file=C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/simulation/qsim/planta_sim.vwf.vt
 quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/simulation/qsim/ processador -c processador
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off processador -c processador --vector_source=C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/planta_sim.vwf --testbench_file=C:/Users/gabriel.cezario/Downloads/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/AOC_ATV2_ESTUDANTES/simulation/qsim/planta_sim.vwf.vt
 
 
 
