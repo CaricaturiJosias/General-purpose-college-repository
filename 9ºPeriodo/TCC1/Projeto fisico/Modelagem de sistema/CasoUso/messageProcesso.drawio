@@ -1,0 +1,68 @@
+<mxfile host="app.diagrams.net" modified="2023-05-28T20:49:29.106Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 OPR/98.0.0.0" etag="H9rhHaAZI-GLG2sYUdCv" version="21.3.5" type="device">
+  <diagram name="Página-1" id="qYaFGMfLOMSxTNOuX8n9">
+    <mxGraphModel dx="908" dy="581" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="U0jpBVwWnCSoLJuP8_aU-10" target="U0jpBVwWnCSoLJuP8_aU-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="U0jpBVwWnCSoLJuP8_aU-1" target="U0jpBVwWnCSoLJuP8_aU-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="185" y="150" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-15" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="U0jpBVwWnCSoLJuP8_aU-4" target="U0jpBVwWnCSoLJuP8_aU-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-4" value="Registrar dados de sensores" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="50" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U0jpBVwWnCSoLJuP8_aU-5" target="U0jpBVwWnCSoLJuP8_aU-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-5" value="Usinas de informação" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="470" y="55" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-10" value="Disponibilizar dados para consumidores" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="230" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="U0jpBVwWnCSoLJuP8_aU-11" target="U0jpBVwWnCSoLJuP8_aU-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="U0jpBVwWnCSoLJuP8_aU-11" target="U0jpBVwWnCSoLJuP8_aU-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-11" value="Consumidores de dados" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="470" y="235" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="U0jpBVwWnCSoLJuP8_aU-1" target="U0jpBVwWnCSoLJuP8_aU-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="U0jpBVwWnCSoLJuP8_aU-25">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="210" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="265" y="375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-1" value="messageProcessor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="150" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="U0jpBVwWnCSoLJuP8_aU-20" target="U0jpBVwWnCSoLJuP8_aU-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-20" value="Beholder" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-22" value="Compartilhar dados com o arranjo de máquinas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="145" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="U0jpBVwWnCSoLJuP8_aU-25" value="Gerar relatórios de desempenho, falhas e ameaças" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="315" y="340" width="100" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
